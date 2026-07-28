@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+:root {
+  --forest: #1b4332;
+  --mid-green: #2d6a4f;
+  --mint: #95d5b2;
+  --mint-soft: #b7e4c7;
+  --paper: #f7f9f7;
+  --mist: #e8f0ea;
+  --ink: #0f1412;
+  --ink-muted: #4a5c52;
+  --cream-dark: #0c1612;
+}
+
+@theme inline {
+  --color-forest: var(--forest);
+  --color-mid-green: var(--mid-green);
+  --color-mint: var(--mint);
+  --color-mint-soft: var(--mint-soft);
+  --color-paper: var(--paper);
+  --color-mist: var(--mist);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-cream-dark: var(--cream-dark);
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-display);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--mint) 55%, transparent);
+  color: var(--forest);
+}
+
+.font-display {
+  font-family: var(--font-display), "Noto Serif SC", serif;
+}
+
+.atmosphere-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.atmosphere-orb--a {
+  width: 42vw;
+  height: 42vw;
+  background: radial-gradient(circle, #95d5b2 0%, transparent 70%);
+  animation: drift-a 22s ease-in-out infinite;
+}
+
+.atmosphere-orb--b {
+  width: 36vw;
+  height: 36vw;
+  background: radial-gradient(circle, #2d6a4f 0%, transparent 70%);
+  opacity: 0.18;
+  animation: drift-b 28s ease-in-out infinite;
+}
+
+.atmosphere-orb--c {
+  width: 28vw;
+  height: 28vw;
+  background: radial-gradient(circle, #b7e4c7 0%, transparent 70%);
+  opacity: 0.28;
+  animation: drift-c 18s ease-in-out infinite;
+}
+
+@keyframes drift-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(8vw, -6vh) scale(1.08);
+  }
+}
+
+@keyframes drift-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-10vw, 8vh) scale(1.12);
+  }
+}
+
+@keyframes drift-c {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(5vw, 10vh);
+  }
+}
+
+@keyframes kenburns {
+  0% {
+    transform: scale(1.05) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.18) translate(-2%, -1%);
+  }
+}
+
+.kenburns {
+  animation: kenburns 28s ease-in-out infinite alternate;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.seed-ripple {
+  animation: ripple 4.5s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atmosphere-orb--a,
+  .atmosphere-orb--b,
+  .atmosphere-orb--c,
+  .kenburns,
+  .seed-ripple {
+    animation: none !important;
+  }
+}
