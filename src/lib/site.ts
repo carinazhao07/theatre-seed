@@ -6,8 +6,7 @@ export const site = {
     "「种戏」是零门槛、纯公益、聚焦县域的公益戏剧教育项目，为欠发达地区青年提供免费的戏剧体验与舞台实践。",
   contactName: "赵宁淇",
   contactEmail: "carina.zhao@yale.edu",
-  contactNote:
-    "如需了解报名、合作或支持，请发邮件给负责人赵宁淇：carina.zhao@yale.edu",
+  contactNote: "联系方式如下。",
 };
 
 export const nav = [

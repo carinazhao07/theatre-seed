@@ -106,10 +106,10 @@ export default function JoinPageEn() {
             <SectionHeading
               eyebrow={contact.eyebrow}
               title={contact.title}
-              description={contact.description}
+              description="Contact details below."
               align="center"
             />
-            <div className="mt-2 space-y-4">
+            <div className="mt-6 space-y-3">
               <p className="font-display text-2xl text-forest md:text-3xl">
                 {contact.lead}
               </p>
@@ -119,8 +119,7 @@ export default function JoinPageEn() {
               >
                 {contact.email}
               </a>
-              <p className="text-sm text-ink-muted">{contact.note}</p>
-              <div className="flex flex-wrap justify-center gap-4 pt-4">
+              <div className="flex flex-wrap justify-center gap-4 pt-6">
                 <Link
                   href="/en/camps"
                   className="bg-forest px-6 py-3 text-sm text-mint transition hover:bg-mid-green"

@@ -184,10 +184,9 @@ export const joinEn = {
   contact: {
     eyebrow: "Contact",
     title: "How to reach us",
-    description: siteEn.contactNote,
-    lead: "Project lead · Ningqi (Carina) Zhao",
+    lead: "Ningqi (Carina) Zhao",
     email: siteEn.contactEmail,
-    note: "For applications, mentor volunteering, or sponsorship, email us directly. A written project overview is available on request.",
+    note: "For applications, volunteering, or partnerships—email is the best way to reach us.",
     ctaCamps: "Browse camp archive",
     ctaAbout: "Learn about our mission",
   },

@@ -143,12 +143,12 @@ export default function JoinPage() {
             <SectionHeading
               eyebrow="Contact"
               title="如何联系"
-              description={site.contactNote}
+              description="联系方式如下。"
               align="center"
             />
-            <div className="mt-2 space-y-4">
+            <div className="mt-6 space-y-3">
               <p className="font-display text-2xl text-forest md:text-3xl">
-                负责人 · 赵宁淇
+                赵宁淇
               </p>
               <a
                 href={`mailto:${site.contactEmail}`}
@@ -156,10 +156,7 @@ export default function JoinPage() {
               >
                 {site.contactEmail}
               </a>
-              <p className="text-sm text-ink-muted">
-                报名、导师志愿与赞助合作，欢迎直接发邮件沟通。项目介绍文字版亦可按需提供。
-              </p>
-              <div className="flex flex-wrap justify-center gap-4 pt-4">
+              <div className="flex flex-wrap justify-center gap-4 pt-6">
                 <Link
                   href="/camps"
                   className="bg-forest px-6 py-3 text-sm text-mint transition hover:bg-mid-green"
