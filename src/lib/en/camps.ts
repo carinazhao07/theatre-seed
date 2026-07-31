@@ -135,9 +135,9 @@ export const campsEn: Camp[] = [
     location: "Guangnan Village, Longsheng, Guangxi + Changsha",
     participants: "17 people (1 director · 3 co-creation mentors · 9 actors · backstage / photo & outreach)",
     status: "completed",
-    cover: "/images/mode-summer.jpg",
+    cover: "/images/camps/2025-summer/poster-donkey.jpg",
     gallery: [
-      "/images/mode-summer.jpg",
+      "/images/camps/2025-summer/poster-donkey.jpg",
       "/images/gallery-24.jpg",
       "/images/gallery-33.jpg",
       "/images/gallery-46.jpg",
@@ -147,7 +147,10 @@ export const campsEn: Camp[] = [
       "/images/gallery-12.jpg",
     ],
     mentors: "Director Ningqi (Carina) Zhao · Workshop mentors including Jiachen, Gaga, and April",
-    venues: ["Guangnan Village premiere (village audience)", "Changsha PEER tour (120+ audience)"],
+    venues: [
+      "Guangnan Conservation Center classroom (Jul 10)",
+      "Changsha Dahan Study Hotel (Jul 13)",
+    ],
     highlights: [
       "4–6 weeks of online pre-study and auditions",
       "Full production of The Donkey Gets Water (《驴得水》)",
@@ -156,7 +159,7 @@ export const campsEn: Camp[] = [
       "Dong village fields, streamside script readings, and market days",
     ],
     summary:
-      "From July 3 to 14, 2025, Theatre Seed's first Summer Camp took place in Guangnan Village, Longsheng County, Guangxi. Seventeen partners from across the country spent ten days in rehearsal, co-creation, and exploration. Under the director and mentors, they staged and refined The Donkey Gets Water (《驴得水》), then toured it in two cities—one performance for villagers in Guangnan, one for a wider audience at PEER in Changsha. The seed planted in Guangnan in January quietly sprouted that July.",
+      "From July 3 to 14, 2025, Theatre Seed's first Summer Camp took place in Guangnan Village, Longsheng County, Guangxi. Seventeen partners from across the country spent ten days in rehearsal, co-creation, and exploration. Under director Ningqi (Carina) Zhao and the mentors, they staged and refined The Donkey Gets Water (《驴得水》), then toured it in two cities—Jul 10 at the Guangnan Conservation Center classroom for villagers, and Jul 13 at Changsha Dahan Study Hotel for a wider audience. The seed planted in Guangnan in January quietly sprouted that July.",
     overview: [
       "Module 1 · Rehearsal & performance: From the first script read-aloud, to line work by the stream and blocking on stone paths, to makeup and costume photos—culminating in two formal performances in Guangnan and Changsha.",
       "Module 2 · Theatre workshops: Making puppets, designing sets, exploring sound and lighting—understanding what makes a production hold together from backstage.",
@@ -165,8 +168,20 @@ export const campsEn: Camp[] = [
     productions: ["The Donkey Gets Water (《驴得水》)"],
     productionsDetailed: [
       {
-        title: "The Donkey Gets Water (《驴得水》)",
-        body: "A classic dark comedy. Actors moved from stumbling over lines to performing without scripts, letting each character settle into their bones. In Guangnan, \"Sanmin Primary School\" signs went up on the courtyard walls as villagers gathered to watch. In Changsha, the final bow closed a summer that was warm and resolute.",
+        title: "《驴得水》 / The Donkey Gets Water",
+        body: "Director: Ningqi (Carina) Zhao\nCast: Yuan Taohe (Principal) · Fu Suwei (Tienan) · You Tiantian (Jiajia) · Yang Chenmin (Kuishan) · Ren Suixin (Zhang Yiman) · Pan Yilin (Special Commissioner) · Hu Shasha (Wife) · Chen Chuanye (Blacksmith) · Teacher Liao Wubi (Ross)\n\nA classic dark comedy. Jul 10, 20:00 Guangnan Conservation Center classroom · Jul 13, 18:30 Changsha Dahan Study Hotel.",
+        poster: "/images/camps/2025-summer/poster-donkey.jpg",
+        photos: [
+          "/images/camps/2025-summer/costume-01-principal.jpg",
+          "/images/camps/2025-summer/costume-02-tienan.jpg",
+          "/images/camps/2025-summer/costume-03-jiajia.jpg",
+          "/images/camps/2025-summer/costume-04-kuishan.jpg",
+          "/images/camps/2025-summer/costume-05-yiman.jpg",
+          "/images/camps/2025-summer/costume-06-commissioner.jpg",
+          "/images/camps/2025-summer/costume-07-wife.jpg",
+          "/images/camps/2025-summer/costume-08-blacksmith.jpg",
+          "/images/camps/2025-summer/costume-09-ross.jpg",
+        ],
       },
     ],
     modules: [

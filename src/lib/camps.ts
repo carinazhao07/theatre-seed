@@ -182,9 +182,9 @@ export const camps: Camp[] = [
     location: "广西龙胜广南村 + 长沙",
     participants: "17 人（导演 1 · 共创导师 3 · 演员组 9 · 幕后 / 摄影宣传等）",
     status: "completed",
-    cover: "/images/mode-summer.jpg",
+    cover: "/images/camps/2025-summer/poster-donkey.jpg",
     gallery: [
-      "/images/mode-summer.jpg",
+      "/images/camps/2025-summer/poster-donkey.jpg",
       "/images/gallery-24.jpg",
       "/images/gallery-33.jpg",
       "/images/gallery-46.jpg",
@@ -193,8 +193,8 @@ export const camps: Camp[] = [
       "/images/gallery-11.jpg",
       "/images/gallery-12.jpg",
     ],
-    mentors: "导演宁淇 · 嘉辰 / 嘎嘎 / April 等工作坊导师",
-    venues: ["广南村首演（村民观众）", "长沙挚友营巡演（120+ 观众）"],
+    mentors: "导演赵宁淇 · 嘉辰 / 嘎嘎 / April 等工作坊导师",
+    venues: ["广南保护中心教室（7.10）", "长沙大汉研学酒店（7.13）"],
     highlights: [
       "营前 4–6 周线上共学与试镜",
       "经典话剧《驴得水》完整排演",
@@ -203,7 +203,7 @@ export const camps: Camp[] = [
       "侗寨田野、溪畔围读与赶集",
     ],
     summary:
-      "2025 年 7 月 3 日至 14 日，第一届「种戏」夏令营在广西龙胜县广南村顺利举办。十七位来自各地的伙伴用十天时间投入排练、共创与探索。在导演与导师们的带领下，完成了《驴得水》的排演与打磨，并带着这部戏走上巡演：一场在广南村演给村民，一场在长沙挚友营呈现给更多观众。一月在广南埋下的种子，于七月悄然发芽。",
+      "2025 年 7 月 3 日至 14 日，第一届「种戏」夏令营在广西龙胜县广南村顺利举办。十七位来自各地的伙伴用十天时间投入排练、共创与探索。在导演赵宁淇与导师们的带领下，完成了《驴得水》的排演与打磨，并带着这部戏走上巡演：7 月 10 日广南保护中心教室演给村民，7 月 13 日在长沙大汉研学酒店呈现给更多观众。一月在广南埋下的种子，于七月悄然发芽。",
     overview: [
       "模块一 · 戏剧排练与演出：从围读剧本开始，溪水边对词，青石板上走位，在妆造下完成定妆照；广南与长沙两场正式演出。",
       "模块二 · 戏剧工作坊：制作木偶、设计布景、体验音效与灯光，从幕后理解一场戏的构成与张力。",
@@ -213,7 +213,19 @@ export const camps: Camp[] = [
     productionsDetailed: [
       {
         title: "《驴得水》",
-        body: "黑色幽默经典话剧。演员从忘词卡壳到脱稿衔接，把角色一点点演进骨血。广南村贴上「三民小学」字条，村民围坐院子观看；长沙谢幕，为整个夏天画上温热又坚定的句点。",
+        body: "导演：赵宁淇\n演员：袁桃荷（校长）· 付苏玮（铁男）· 尤甜甜（佳佳）· 杨陈敏（魁山）· 任随心（张一曼）· 潘怡林（特派员）· 胡莎莎（老婆）· 陈传椰（铁匠）· 廖五碧老师（罗斯）\n\n黑色幽默经典话剧。7 月 10 日 20:00 广南保护中心教室 · 7 月 13 日 18:30 长沙大汉研学酒店。",
+        poster: "/images/camps/2025-summer/poster-donkey.jpg",
+        photos: [
+          "/images/camps/2025-summer/costume-01-principal.jpg",
+          "/images/camps/2025-summer/costume-02-tienan.jpg",
+          "/images/camps/2025-summer/costume-03-jiajia.jpg",
+          "/images/camps/2025-summer/costume-04-kuishan.jpg",
+          "/images/camps/2025-summer/costume-05-yiman.jpg",
+          "/images/camps/2025-summer/costume-06-commissioner.jpg",
+          "/images/camps/2025-summer/costume-07-wife.jpg",
+          "/images/camps/2025-summer/costume-08-blacksmith.jpg",
+          "/images/camps/2025-summer/costume-09-ross.jpg",
+        ],
       },
     ],
     modules: [
