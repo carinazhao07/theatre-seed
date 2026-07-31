@@ -6,7 +6,8 @@ export const siteEn = {
     "Theatre Seed is a free, no-barrier theatre education project for young people in China’s county regions—offering stage practice and creative collaboration at no cost.",
   contactName: "Ningqi (Carina) Zhao",
   contactEmail: "carina.zhao@yale.edu",
-  contactNote: "Contact details below.",
+  contactNote:
+    "Feel free to email project lead Ningqi (Carina) Zhao about applications, volunteering, or partnerships: carina.zhao@yale.edu",
 };
 
 export const navEn = [
@@ -78,6 +79,7 @@ export const uiEn = {
     schedule: "Schedule",
     scheduleDesc: "From icebreakers to the stage—each step leaves a mark.",
     productions: "Productions",
+    director: "Director:",
     premise: "Starting prompt:",
     story: "Camp story",
     voices: "Voices",

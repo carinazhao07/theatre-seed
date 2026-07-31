@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
-import { SectionHeading } from "@/components/SectionHeading";
 import { joinEn } from "@/lib/en/pages";
+import { siteEn } from "@/lib/en/site";
 
 export const metadata: Metadata = joinEn.metadata;
 
@@ -101,38 +101,36 @@ export default function JoinPageEn() {
       </section>
 
       <section id="contact" className="bg-mist/50 py-16 md:py-24">
-        <div className="mx-auto max-w-3xl px-5 text-center md:px-8">
+        <div className="mx-auto max-w-2xl px-5 text-center md:px-8">
           <Reveal>
-            <SectionHeading
-              eyebrow={contact.eyebrow}
-              title={contact.title}
-              description="Contact details below."
-              align="center"
-            />
-            <div className="mt-6 space-y-3">
-              <p className="font-display text-2xl text-forest md:text-3xl">
-                {contact.lead}
-              </p>
-              <a
-                href={`mailto:${contact.email}`}
-                className="inline-block text-base text-mid-green transition hover:text-forest md:text-lg"
+            <p className="text-xs tracking-[0.25em] text-mid-green uppercase">
+              {contact.eyebrow}
+            </p>
+            <h2 className="mt-4 font-display text-3xl text-forest md:text-4xl">
+              {contact.title}
+            </h2>
+            <p className="mt-8 text-base leading-relaxed text-ink-muted md:text-lg md:leading-[1.85]">
+              {contact.body}
+            </p>
+            <a
+              href={`mailto:${siteEn.contactEmail}`}
+              className="mt-6 inline-block font-display text-lg tracking-wide text-mid-green transition hover:text-forest md:text-xl"
+            >
+              {siteEn.contactEmail}
+            </a>
+            <div className="mt-10 flex flex-wrap justify-center gap-3">
+              <Link
+                href="/en/camps"
+                className="bg-forest px-6 py-3 text-sm text-mint transition hover:bg-mid-green"
               >
-                {contact.email}
-              </a>
-              <div className="flex flex-wrap justify-center gap-4 pt-6">
-                <Link
-                  href="/en/camps"
-                  className="bg-forest px-6 py-3 text-sm text-mint transition hover:bg-mid-green"
-                >
-                  {contact.ctaCamps}
-                </Link>
-                <Link
-                  href="/en/about"
-                  className="border border-forest px-6 py-3 text-sm text-forest transition hover:bg-white"
-                >
-                  {contact.ctaAbout}
-                </Link>
-              </div>
+                {contact.ctaCamps}
+              </Link>
+              <Link
+                href="/en/about"
+                className="border border-forest px-6 py-3 text-sm text-forest transition hover:bg-white"
+              >
+                {contact.ctaAbout}
+              </Link>
             </div>
           </Reveal>
         </div>

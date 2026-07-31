@@ -1,5 +1,3 @@
-import { siteEn } from "@/lib/en/site";
-
 export const aboutEn = {
   metadata: {
     title: "About Us",
@@ -106,7 +104,7 @@ export const campsPageEn = {
         "Often uses dual venues—county + city (e.g. Guangnan + Changsha)",
         "Core model: full production of a classic play + multi-stop tour",
         "Online pre-study, auditions, read-alouds, workshops, costume photos, technical integration",
-        "Completed: 2025 The Donkey Gets Water, two performances; 2026 Jiaxing — Oppression & The Little Prince, three shows",
+        "Completed: 2025 The Donkey Gets Water, two performances; 2026 Jiaxing & Shanghai — Oppression & The Little Prince, three shows",
       ],
       imgAlt: "Theatre Seed Summer Camp",
     },
@@ -176,7 +174,7 @@ export const joinEn = {
       eyebrow: "03",
       title: "Sponsorship & partnership",
       body: "For foundations, funders, and institutional partners. With a clear focus on no barriers, fully nonprofit, county-based work, Theatre Seed builds a project archive that can be seen and sustained.",
-      cta: "Request project materials",
+      cta: "Write to us",
       href: "#contact",
       tone: "dark" as const,
     },
@@ -184,9 +182,7 @@ export const joinEn = {
   contact: {
     eyebrow: "Contact",
     title: "How to reach us",
-    lead: "Ningqi (Carina) Zhao",
-    email: siteEn.contactEmail,
-    note: "For applications, volunteering, or partnerships—email is the best way to reach us.",
+    body: "If you'd like to apply, volunteer as a mentor, or talk about partnership and support, feel free to email project lead Ningqi (Carina) Zhao. We read every message and will get back to you as soon as we can.",
     ctaCamps: "Browse camp archive",
     ctaAbout: "Learn about our mission",
   },

@@ -39,6 +39,7 @@ const copyEn = {
   schedule: t.schedule,
   scheduleDesc: t.scheduleDesc,
   productions: t.productions,
+  director: t.director,
   premise: t.premise,
   story: t.story,
   voices: t.voices,

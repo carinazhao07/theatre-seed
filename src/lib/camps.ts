@@ -10,6 +10,8 @@ export type ScheduleItem = {
 export type Production = {
   title: string;
   premise?: string;
+  /** 导演姓名；展示时字号更大 */
+  director?: string;
   body: string;
   poster?: string;
   photos?: string[];
@@ -213,7 +215,8 @@ export const camps: Camp[] = [
     productionsDetailed: [
       {
         title: "《驴得水》",
-        body: "导演：赵宁淇\n演员：袁桃荷（校长）· 付苏玮（铁男）· 尤甜甜（佳佳）· 杨陈敏（魁山）· 任随心（张一曼）· 潘怡林（特派员）· 胡莎莎（老婆）· 陈传椰（铁匠）· 廖五碧老师（罗斯）\n\n黑色幽默经典话剧。7 月 10 日 20:00 广南保护中心教室 · 7 月 13 日 18:30 长沙大汉研学酒店。",
+        director: "赵宁淇",
+        body: "黑色幽默经典话剧。7 月 10 日 20:00 广南保护中心教室 · 7 月 13 日 18:30 长沙大汉研学酒店。",
         poster: "/images/camps/2025-summer/poster-donkey.jpg",
         photos: [
           "/images/camps/2025-summer/costume-01-principal.jpg",
@@ -330,12 +333,13 @@ export const camps: Camp[] = [
       "茶馆雨中首演 + 高中生场巡演",
     ],
     summary:
-      "2026 年 2 月 4 日至 8 日，「种戏」冬令营首次落地湖南省怀化市黔阳古城。十五位伙伴用四天完成从零到舞台的探索：共同书写剧本、完成灯光及音效设计，创作《爱要大声说出口》与《延迟修复》，并在古城茶馆与中方一中 / 冬旅人营点完成巡演。从零到一的舞台经验里，藏着即兴创作的好奇心与团队协作的包容力——尝试戏剧，也许并不像预设的那么艰难。",
+      "2026 年 2 月 4 日至 8 日，「种戏」冬令营首次落地湖南省怀化市黔阳古城。十五位伙伴用五天完成从零到舞台的探索：共同书写剧本、完成灯光及音效设计，创作《爱要大声说出口》与《延迟修复》，并在古城茶馆与中方一中 / 冬旅人营点完成巡演。从零到一的舞台经验里，藏着即兴创作的好奇心与团队协作的包容力——尝试戏剧，也许并不像预设的那么艰难。",
     overview: [
       "Day 1：欢迎与破冰。带着线上共学任务与自创人物，围坐分享「人生碎片」，信任与脆弱在夜晚流转。",
       "Day 2：表演训练（腹部发声、情绪表达）；线上学习灯光音效；按角色主题分组完成剧本初稿。",
       "Day 3：即兴与肢体、道具音效制作、剧本打磨与排练。",
-      "Day 4：彩排冲刺、黔阳演出、中方演出与庆功复盘。",
+      "Day 4：彩排冲刺、黔阳演出。",
+      "Day 5：中方一中演出与庆功复盘。",
     ],
     productions: ["《爱要大声说出口》", "《延迟修复》"],
     productionsDetailed: [
@@ -389,9 +393,15 @@ export const camps: Camp[] = [
       },
       {
         date: "Day 4",
-        label: "彩排与巡演",
+        label: "彩排与黔阳演出",
         phase: "performance",
-        highlights: ["彩排冲刺", "黔阳演出", "中方演出", "庆功复盘"],
+        highlights: ["彩排冲刺", "黔阳演出"],
+      },
+      {
+        date: "Day 5",
+        label: "中方一中与复盘",
+        phase: "wrap",
+        highlights: ["中方一中演出", "庆功复盘"],
       },
     ],
     quotes: [
@@ -423,21 +433,22 @@ export const camps: Camp[] = [
     season: "夏令营",
     year: 2026,
     title: "种戏夏令营 2026",
-    subtitle: "嘉兴十一日：《压迫》与《小王子》",
+    subtitle: "嘉兴 & 上海十一日：《压迫》与《小王子》",
     dates: "2026.07.23 – 08.02",
-    location: "浙江嘉兴",
+    location: "浙江嘉兴 & 上海",
     participants: "演员组 · 幕后组 · 导师团队",
     status: "completed",
     cover: "/images/camps/2026-summer/poster-oppression.jpg",
     gallery: [],
     summary:
-      "2026 年 7 月 23 日至 8 月 2 日，「种戏」夏令营在浙江嘉兴举办。营期排演《压迫》与《小王子》两部戏，并以 7.31 / 8.1 / 8.2 三场演出收束。完整回顾与更多现场影像将陆续更新。",
+      "2026 年 7 月 23 日至 8 月 2 日，「种戏」夏令营在浙江嘉兴 & 上海举办。营期排演《压迫》与《小王子》两部戏，并以 7.31 / 8.1 / 8.2 三场演出收束。完整回顾与更多现场影像将陆续更新。",
     overview: [],
     productions: ["《压迫》", "《小王子》"],
     productionsDetailed: [
       {
         title: "《压迫》",
-        body: "导演：冉与郭\n演员：周翔（男客）· 赵紫涵（女客）· 饶婷（房东）· 谢琴（丫鬟）· 王若凝（巡警）",
+        director: "冉与郭",
+        body: "",
         poster: "/images/camps/2026-summer/poster-oppression.jpg",
         photos: [
           "/images/camps/2026-summer/oppression-01.jpg",
@@ -449,7 +460,8 @@ export const camps: Camp[] = [
       },
       {
         title: "《小王子》",
-        body: "导演：王嘉佳\n演员：陈湘（飞行员）· 饶妃玲（小王子）· 潘樾（狐狸 / 花）· 李浩错（国王 / 商人）· 卢子涵（虚荣的人 / 地理学家 / 蛇）· 袁露（机械师 / 醉酒的人 / 点灯的人）",
+        director: "王嘉佳",
+        body: "",
         poster: "/images/camps/2026-summer/poster-petit-prince.jpg",
         photos: [
           "/images/camps/2026-summer/prince-01.jpg",

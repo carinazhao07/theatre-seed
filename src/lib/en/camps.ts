@@ -169,7 +169,8 @@ export const campsEn: Camp[] = [
     productionsDetailed: [
       {
         title: "《驴得水》 / The Donkey Gets Water",
-        body: "Director: Ningqi (Carina) Zhao\nCast: Yuan Taohe (Principal) · Fu Suwei (Tienan) · You Tiantian (Jiajia) · Yang Chenmin (Kuishan) · Ren Suixin (Zhang Yiman) · Pan Yilin (Special Commissioner) · Hu Shasha (Wife) · Chen Chuanye (Blacksmith) · Teacher Liao Wubi (Ross)\n\nA classic dark comedy. Jul 10, 20:00 Guangnan Conservation Center classroom · Jul 13, 18:30 Changsha Dahan Study Hotel.",
+        director: "Ningqi (Carina) Zhao",
+        body: "A classic dark comedy. Jul 10, 20:00 Guangnan Conservation Center classroom · Jul 13, 18:30 Changsha Dahan Study Hotel.",
         poster: "/images/camps/2025-summer/poster-donkey.jpg",
         photos: [
           "/images/camps/2025-summer/costume-01-principal.jpg",
@@ -286,12 +287,13 @@ export const campsEn: Camp[] = [
       "Rainy teahouse premiere + high school tour",
     ],
     summary:
-      "From February 4 to 8, 2026, Theatre Seed's Winter Camp came to Qianyang Ancient Town in Huaihua, Hunan for the first time. Fifteen partners completed a four-day journey from zero to stage: co-writing scripts, designing lighting and sound, creating Say It Out Loud (《爱要大声说出口》) and Delayed Repair (《延迟修复》), and touring them at a teahouse in the ancient town and at Zhongfang No. 1 Middle School / the Winter Traveller site. In the experience of building something from nothing lay curiosity for improvisation and the generosity of teamwork—trying theatre may not be as hard as we imagine.",
+      "From February 4 to 8, 2026, Theatre Seed's Winter Camp came to Qianyang Ancient Town in Huaihua, Hunan for the first time. Fifteen partners completed a five-day journey from zero to stage: co-writing scripts, designing lighting and sound, creating Say It Out Loud (《爱要大声说出口》) and Delayed Repair (《延迟修复》), and touring them at a teahouse in the ancient town and at Zhongfang No. 1 Middle School / the Winter Traveller site. In the experience of building something from nothing lay curiosity for improvisation and the generosity of teamwork—trying theatre may not be as hard as we imagine.",
     overview: [
       "Day 1: Welcome and icebreakers. With online pre-study tasks and self-created characters in hand, the group shared \"fragments of life\" around the fire—trust and vulnerability flowing through the night.",
       "Day 2: Performance training (abdominal breathing, emotional expression); online learning in lighting and sound; first-draft scripts by character-themed groups.",
       "Day 3: Improvisation and physical work, prop and sound making, script refinement and rehearsal.",
-      "Day 4: Final rehearsal sprint, Qianyang performance, Zhongfang performance, and celebratory debrief.",
+      "Day 4: Final rehearsal sprint and Qianyang performance.",
+      "Day 5: Zhongfang No. 1 Middle School performance and celebratory debrief.",
     ],
     productions: ["Say It Out Loud (《爱要大声说出口》)", "Delayed Repair (《延迟修复》)"],
     productionsDetailed: [
@@ -345,9 +347,15 @@ export const campsEn: Camp[] = [
       },
       {
         date: "Day 4",
-        label: "Rehearsal & tour",
+        label: "Rehearsal & Qianyang",
         phase: "performance",
-        highlights: ["Final rehearsal sprint", "Qianyang performance", "Zhongfang performance", "Celebration & debrief"],
+        highlights: ["Final rehearsal sprint", "Qianyang performance"],
+      },
+      {
+        date: "Day 5",
+        label: "Zhongfang & debrief",
+        phase: "wrap",
+        highlights: ["Zhongfang No. 1 Middle School performance", "Celebration & debrief"],
       },
     ],
     quotes: [
@@ -379,21 +387,22 @@ export const campsEn: Camp[] = [
     season: "Summer Camp",
     year: 2026,
     title: "Theatre Seed Summer Camp 2026",
-    subtitle: "Eleven days in Jiaxing — Oppression & The Little Prince",
+    subtitle: "Eleven days in Jiaxing & Shanghai — Oppression & The Little Prince",
     dates: "Jul 23 – Aug 2, 2026",
-    location: "Jiaxing, Zhejiang",
+    location: "Jiaxing, Zhejiang & Shanghai",
     participants: "Actor group · backstage group · mentor team",
     status: "completed",
     cover: "/images/camps/2026-summer/poster-oppression.jpg",
     gallery: [],
     summary:
-      "From July 23 to August 2, 2026, Theatre Seed Summer Camp took place in Jiaxing, Zhejiang. The company staged Oppression and The Little Prince, closing with three performances on Jul 31, Aug 1, and Aug 2. A fuller recap and more field photos will follow.",
+      "From July 23 to August 2, 2026, Theatre Seed Summer Camp took place in Jiaxing, Zhejiang & Shanghai. The company staged Oppression and The Little Prince, closing with three performances on Jul 31, Aug 1, and Aug 2. A fuller recap and more field photos will follow.",
     overview: [],
     productions: ["Oppression", "The Little Prince"],
     productionsDetailed: [
       {
         title: "Oppression",
-        body: "Directed by Ran & Guo\nCast: Zhou Xiang (Male Guest) · Zhao Zihan (Female Guest) · Rao Ting (Landlord) · Xie Qin (Maidservant) · Wang Ruoning (Patrol Officer)",
+        director: "Ran & Guo",
+        body: "",
         poster: "/images/camps/2026-summer/poster-oppression.jpg",
         photos: [
           "/images/camps/2026-summer/oppression-01.jpg",
@@ -405,7 +414,8 @@ export const campsEn: Camp[] = [
       },
       {
         title: "The Little Prince",
-        body: "Directed by Wang Jiajia\nCast: Chen Xiang (Aviator) · Rao Feiling (Little Prince) · Pan Yue (Fox / Flower) · Li Haocuo (King / Businessman) · Lu Zihan (Vain Man / Geographer / Snake) · Yuan Lu (Mechanic / Drunkard / Lamplighter)",
+        director: "Wang Jiajia",
+        body: "",
         poster: "/images/camps/2026-summer/poster-petit-prince.jpg",
         photos: [
           "/images/camps/2026-summer/prince-01.jpg",

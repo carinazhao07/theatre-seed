@@ -52,7 +52,7 @@ export const homeEn = {
   },
   archive: {
     title: "Past camps",
-    intro: "From Guangnan Dong Village to Qianyang Ancient Town to stages in Jiaxing—every season deserves to be remembered in full.",
+    intro: "From Guangnan Dong Village to Qianyang Ancient Town to stages in Jiaxing and Shanghai—every season deserves to be remembered in full.",
     ongoingTag: "In progress",
     endedTag: "Archived",
     archiveSoon: "Archive opening soon",

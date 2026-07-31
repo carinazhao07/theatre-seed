@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
-import { SectionHeading } from "@/components/SectionHeading";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -34,7 +33,7 @@ const channels = [
     eyebrow: "03",
     title: "赞助与合作",
     body: "面向基金会、投资方与机构伙伴。种戏以零门槛、纯公益、聚焦县域的清晰定位，持续沉淀可被看见的项目档案。",
-    cta: "获取项目介绍",
+    cta: "邮件联系我们",
     href: "#contact",
     tone: "dark" as const,
   },
@@ -138,38 +137,36 @@ export default function JoinPage() {
       </section>
 
       <section id="contact" className="bg-mist/50 py-16 md:py-24">
-        <div className="mx-auto max-w-3xl px-5 text-center md:px-8">
+        <div className="mx-auto max-w-2xl px-5 text-center md:px-8">
           <Reveal>
-            <SectionHeading
-              eyebrow="Contact"
-              title="如何联系"
-              description="联系方式如下。"
-              align="center"
-            />
-            <div className="mt-6 space-y-3">
-              <p className="font-display text-2xl text-forest md:text-3xl">
-                赵宁淇
-              </p>
-              <a
-                href={`mailto:${site.contactEmail}`}
-                className="inline-block text-base text-mid-green transition hover:text-forest md:text-lg"
+            <p className="text-xs tracking-[0.25em] text-mid-green uppercase">
+              Contact
+            </p>
+            <h2 className="mt-4 font-display text-3xl text-forest md:text-4xl">
+              如何联系
+            </h2>
+            <p className="mt-8 text-base leading-relaxed text-ink-muted md:text-lg md:leading-[1.85]">
+              如果你想了解报名、成为导师志愿者，或聊聊赞助与合作，欢迎发邮件给项目负责人赵宁淇。我们会认真读每一封来信，并尽快回复。
+            </p>
+            <a
+              href={`mailto:${site.contactEmail}`}
+              className="mt-6 inline-block font-display text-lg tracking-wide text-mid-green transition hover:text-forest md:text-xl"
+            >
+              {site.contactEmail}
+            </a>
+            <div className="mt-10 flex flex-wrap justify-center gap-3">
+              <Link
+                href="/camps"
+                className="bg-forest px-6 py-3 text-sm text-mint transition hover:bg-mid-green"
               >
-                {site.contactEmail}
-              </a>
-              <div className="flex flex-wrap justify-center gap-4 pt-6">
-                <Link
-                  href="/camps"
-                  className="bg-forest px-6 py-3 text-sm text-mint transition hover:bg-mid-green"
-                >
-                  查看营期归档
-                </Link>
-                <Link
-                  href="/about"
-                  className="border border-forest px-6 py-3 text-sm text-forest transition hover:bg-white"
-                >
-                  了解项目理念
-                </Link>
-              </div>
+                查看营期归档
+              </Link>
+              <Link
+                href="/about"
+                className="border border-forest px-6 py-3 text-sm text-forest transition hover:bg-white"
+              >
+                了解项目理念
+              </Link>
             </div>
           </Reveal>
         </div>

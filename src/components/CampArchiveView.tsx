@@ -15,6 +15,7 @@ export type CampArchiveCopy = {
   schedule: string;
   scheduleDesc: string;
   productions: string;
+  director: string;
   premise: string;
   story: string;
   voices: string;
@@ -255,9 +256,19 @@ export function CampArchiveView({
                             {copy.premise} {p.premise}
                           </p>
                         )}
-                        <p className="mt-5 whitespace-pre-line text-sm leading-relaxed text-ink-muted md:text-base md:leading-[1.85]">
-                          {p.body}
-                        </p>
+                        {p.director && (
+                          <p className="mt-5 font-display text-xl text-forest md:text-2xl">
+                            <span className="mr-1 text-base text-mid-green md:text-lg">
+                              {copy.director}
+                            </span>
+                            {p.director}
+                          </p>
+                        )}
+                        {p.body ? (
+                          <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-ink-muted md:text-base md:leading-[1.85]">
+                            {p.body}
+                          </p>
+                        ) : null}
                       </div>
                     </div>
                     {p.photos && p.photos.length > 0 && (

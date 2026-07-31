@@ -53,7 +53,7 @@ export const homeZh = {
   },
   archive: {
     title: "历届营期",
-    intro: "从广南侗寨到黔阳古城，再到嘉兴舞台——每一届都值得被完整记住。",
+    intro: "从广南侗寨到黔阳古城，再到嘉兴与上海的舞台——每一届都值得被完整记住。",
     ongoingTag: "进行中",
     endedTag: "已结束",
     archiveSoon: "归档即将开放",

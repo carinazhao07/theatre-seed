@@ -35,6 +35,7 @@ const copyZh = {
   schedule: "营期日程",
   scheduleDesc: "从破冰到舞台，每一步都是成长的印记。",
   productions: "剧目与共创",
+  director: "导演：",
   premise: "原始命题：",
   story: "营期故事",
   voices: "学员声音",
