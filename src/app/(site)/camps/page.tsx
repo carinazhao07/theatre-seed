@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { CampCard } from "@/components/CampCard";
 import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -32,8 +33,19 @@ const flow = [
 export default function CampsPage() {
   return (
     <>
-      <section className="bg-cream-dark pt-28 pb-16 text-white md:pt-36 md:pb-20">
-        <div className="mx-auto max-w-6xl px-5 md:px-8">
+      <section className="relative overflow-hidden bg-cream-dark pt-28 pb-16 text-white md:pt-36 md:pb-20">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/gallery-32.jpg"
+            alt=""
+            fill
+            className="object-cover opacity-40"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-cream-dark/70" />
+        </div>
+        <div className="relative mx-auto max-w-6xl px-5 md:px-8">
           <Reveal>
             <p className="text-xs tracking-[0.25em] text-mint uppercase">
               Camps & Archive
@@ -56,7 +68,17 @@ export default function CampsPage() {
         </Reveal>
         <div className="grid gap-6 lg:grid-cols-2">
           <Reveal>
-            <div className="h-full border border-forest/10 bg-white/70 p-8">
+            <div className="overflow-hidden border border-forest/10 bg-white/70">
+              <div className="relative aspect-[16/9]">
+                <Image
+                  src="/images/gallery-38.jpg"
+                  alt="冬令营"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width:1024px) 100vw, 50vw"
+                />
+              </div>
+              <div className="p-8">
               <p className="text-xs tracking-[0.2em] text-mid-green uppercase">Winter</p>
               <h2 className="mt-3 font-display text-3xl text-forest">种戏冬令营</h2>
               <p className="mt-2 text-sm text-ink-muted">3–5 天 · 短周期高强度共创</p>
@@ -66,10 +88,22 @@ export default function CampsPage() {
                 <li>· 即兴训练、剧本共创、灯光音效、社区 / 中学巡演</li>
                 <li>· 已完成：2025 广南原创 · 2026 黔阳双剧（《爱要大声说出口》《延迟修复》）</li>
               </ul>
+              </div>
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="h-full border border-forest/10 bg-forest p-8 text-white">
+            <div className="overflow-hidden border border-forest/10 bg-forest text-white">
+              <div className="relative aspect-[16/9]">
+                <Image
+                  src="/images/mode-summer.jpg"
+                  alt="种戏夏令营"
+                  fill
+                  className="object-cover opacity-90"
+                  sizes="(max-width:1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-forest/35" />
+              </div>
+              <div className="p-8">
               <p className="text-xs tracking-[0.2em] text-mint uppercase">Summer</p>
               <h2 className="mt-3 font-display text-3xl text-mint">种戏夏令营</h2>
               <p className="mt-2 text-sm text-white/65">约 10 天 · 长周期深打磨</p>
@@ -79,6 +113,7 @@ export default function CampsPage() {
                 <li>· 线上共学、试镜、围读、工作坊、定妆与技术合成</li>
                 <li>· 已完成：2025《驴得水》双场；进行中：2026 嘉兴十一日三场演出</li>
               </ul>
+              </div>
             </div>
           </Reveal>
         </div>
@@ -89,6 +124,38 @@ export default function CampsPage() {
           <Reveal>
             <SectionHeading eyebrow="Process" title="统一的项目流程" />
           </Reveal>
+          <div className="mb-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                src: "/images/process-01-online.jpg",
+                alt: "01 线上共学",
+              },
+              {
+                src: "/images/gallery-25.jpg",
+                alt: "02 线下排练",
+              },
+              {
+                src: "/images/process-03-tour.jpg",
+                alt: "03 巡演演出",
+              },
+              {
+                src: "/images/gallery-40.jpg",
+                alt: "04 复盘沉淀",
+              },
+            ].map((img, i) => (
+              <Reveal key={img.src} delay={i * 0.05}>
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width:1024px) 50vw, 25vw"
+                  />
+                </div>
+              </Reveal>
+            ))}
+          </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {flow.map((step, i) => (
               <Reveal key={step.title} delay={i * 0.07}>

@@ -10,6 +10,136 @@
   --ink: #0f1412;
   --ink-muted: #4a5c52;
   --cream-dark: #0c1612;
+  --font-display: var(--font-display-zh);
+  --font-body: var(--font-body-zh);
+}
+
+.locale-en {
+  --font-display: var(--font-display-en);
+  --font-body: var(--font-body-en);
+  --paper: #f3f6f2;
+  --mist: #e3ebe5;
+  --en-base: 1.0625rem;
+  --en-leading: 1.72;
+  font-size: var(--en-base);
+  line-height: var(--en-leading);
+  letter-spacing: 0.005em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.locale-en body,
+.locale-en {
+  font-family: var(--font-body), "Source Sans 3", system-ui, sans-serif;
+}
+
+.locale-en .font-display {
+  font-family: var(--font-display), Fraunces, Georgia, serif;
+  letter-spacing: -0.02em;
+  line-height: 1.18;
+  font-weight: 560;
+}
+
+/* English-friendly type scale overrides for Tailwind utility stacks */
+.locale-en h1.font-display,
+.locale-en .font-display.text-4xl {
+  font-size: clamp(2rem, 4.2vw, 2.85rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.locale-en .font-display.md\:text-5xl,
+.locale-en .font-display.text-5xl {
+  line-height: 1.12;
+}
+
+.locale-en .font-display.md\:text-6xl,
+.locale-en .font-display.text-6xl {
+  font-size: clamp(2.35rem, 5vw, 3.35rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.locale-en .font-display.text-3xl {
+  font-size: clamp(1.45rem, 2.4vw, 1.85rem);
+  line-height: 1.2;
+}
+
+.locale-en .font-display.text-2xl {
+  font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+  line-height: 1.25;
+}
+
+.locale-en .font-display.text-xl {
+  font-size: 1.2rem;
+  line-height: 1.35;
+}
+
+.locale-en p,
+.locale-en li,
+.locale-en dd {
+  line-height: 1.75;
+}
+
+.locale-en .leading-relaxed {
+  line-height: 1.78;
+}
+
+.locale-en .text-base {
+  font-size: 1.0625rem;
+}
+
+.locale-en .text-lg {
+  font-size: 1.175rem;
+  line-height: 1.7;
+}
+
+.locale-en .text-sm {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+
+.locale-en .text-xs {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+}
+
+.locale-en header nav a,
+.locale-en header a {
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+}
+
+.locale-en h1.font-display {
+  font-size: clamp(2.25rem, 4.8vw, 3.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
+.locale-en h2.font-display {
+  font-size: clamp(1.7rem, 3.2vw, 2.55rem) !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+}
+
+.locale-en h3.font-display {
+  font-size: clamp(1.2rem, 1.7vw, 1.55rem);
+  line-height: 1.28;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+}
+
+.locale-en .section-heading p:last-of-type {
+  font-size: 1.075rem;
+  line-height: 1.72;
+  max-width: 38rem;
+}
+
+.locale-en blockquote.font-display,
+.locale-en .font-display.text-lg {
+  line-height: 1.55;
+  letter-spacing: -0.01em;
 }
 
 @theme inline {
@@ -42,7 +172,7 @@ body {
 }
 
 .font-display {
-  font-family: var(--font-display), "Noto Serif SC", serif;
+  font-family: var(--font-display), "Noto Serif SC", Georgia, serif;
 }
 
 .atmosphere-orb {

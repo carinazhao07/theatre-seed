@@ -1,6 +1,6 @@
 export const site = {
   name: "种戏",
-  nameEn: "Zhongxi",
+  nameEn: "Theatre Seed",
   tagline: "种下心中戏剧的种子",
   description:
     "「种戏」是零门槛、纯公益、聚焦县域的公益戏剧教育项目，为欠发达地区青年提供免费的戏剧体验与舞台实践。",

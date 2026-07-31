@@ -15,7 +15,7 @@ export type Production = {
 
 export type Camp = {
   slug: string;
-  season: "冬令营" | "夏令营";
+  season: string;
   year: number;
   title: string;
   subtitle: string;
@@ -23,6 +23,8 @@ export type Camp = {
   location: string;
   participants: string;
   status: CampStatus;
+  /** false = 进行中，列表可见但不可进入归档 */
+  openable?: boolean;
   cover: string;
   gallery: string[];
   summary: string;
@@ -39,6 +41,10 @@ export type Camp = {
   schedule?: ScheduleItem[];
 };
 
+export function isCampOpenable(camp: Camp) {
+  return camp.openable !== false && camp.status !== "ongoing";
+}
+
 export const camps: Camp[] = [
   {
     slug: "2025-winter",
@@ -50,13 +56,15 @@ export const camps: Camp[] = [
     location: "广西龙胜 · 广南村",
     participants: "12 位学员 + 导师团队",
     status: "completed",
-    cover: "/images/gallery-01.jpg",
+    cover: "/images/gallery-20.jpg",
     gallery: [
-      "/images/gallery-01.jpg",
+      "/images/gallery-20.jpg",
+      "/images/gallery-21.jpg",
+      "/images/gallery-25.jpg",
       "/images/gallery-06.jpg",
+      "/images/gallery-43.jpg",
+      "/images/gallery-29.jpg",
       "/images/gallery-05.jpg",
-      "/images/gallery-07.jpg",
-      "/images/gallery-08.jpg",
     ],
     mentors: "导师秋秋（上戏）· 发起人宁淇 · 舞监呱呱等",
     venues: ["广南侗寨保护中心（村民公演）"],
@@ -67,13 +75,12 @@ export const camps: Camp[] = [
       "学唱 Beyond《Amani》",
     ],
     summary:
-      "「种戏」首次落地广南侗寨。十二位来自各地的伙伴，与导师秋秋相聚于此，用三天时间完成一场从零到舞台的戏剧探索——多数人从未接触过戏剧，却在密集训练与团队协作中，呈现出充满生命力的原创演出。",
+      "2025 年 1 月 16 日至 19 日，「种戏」冬令营首次落地广西龙胜县广南村。十二位来自各地的伙伴，与毕业于上海戏剧学院、有丰富话剧表演导演经验的导师秋秋相聚于此，用三天时间完成一场从零到舞台的戏剧探索。他们中多数人从未接触过戏剧，却在密集的表演训练、即兴创作与团队协作中，最终呈现出一场充满生命力的原创演出，让寂静的山野第一次回荡起属于自己的戏剧之声。",
     overview: [
-      "欢迎与破冰：围炉夜话，分享脆弱与记忆，建立信任。",
-      "表演训练：腹部发声、喜怒哀乐怕五情台词、人物关系塑造与专注力训练。",
-      "戏剧游戏：「接抛球」「我是一棵树」、Music Toy 即兴合奏。",
-      "共创演出：以个人经历构思剧本，剪影与布景制作，裁剪服装、设计海报并入村宣传。",
-      "正式公演：在广南侗寨保护中心呈现光影与歌声交织的汇报演出，吸引众多村民观看。",
+      "Day 1：欢迎与破冰。不久前才相识的大家围炉夜话，彼此信任，分享脆弱与记忆。",
+      "Day 2：表演台词训练——腹部发声、情绪表达；话剧理论通识课；学唱歌谣《Amani》。",
+      "Day 3：即兴表演与肢体探索；粗裁服装、在纸箱上绘画；搭建「神树」与剪影背景；制作海报并入村宣传。",
+      "Day 4：剧本与剪影剧情技术合成、彩排冲刺、正式演出与庆功复盘。",
     ],
     productions: ["学员共创原创短剧（含剪影剧情）"],
     productionsDetailed: [
@@ -96,14 +103,15 @@ export const camps: Camp[] = [
         body: "合唱演奏 Beyond《Amani》（斯瓦希里语「和平」）。不同乐器共同演绎，让音乐成为连接彼此的桥梁，感受共鸣与力量。",
       },
       {
-        title: "舞台制作与宣传",
-        body: "粗裁服装，在纸箱上绘画，搭建「神树」与剪影背景；制作海报，在村里逐户宣传，把观众请进自己的剧场。",
+        title: "共创演出",
+        body: "以个人经历为灵感构思剧本与剧情，结合剪影艺术与纸箱、「神树」等布景；亲手裁剪服装、设计海报，并走进村子邀请村民。最终在广南侗寨保护中心呈现光影与歌声交织的汇报演出。",
       },
       {
-        title: "公演与复盘",
-        body: "技术合成、彩排冲刺后正式演出。复盘环节「看见彼此和自己」，收获真挚祝福——三天短如一瞬，却足以让陌生人成为家人。",
+        title: "三天之后",
+        body: "节奏很快，却神奇地完成了演出任务。复盘环节「看见彼此和自己」，收获真挚祝福——三天短如一瞬，却足以让陌生人成为家人。AMANI NAKUPENDA（爱与和平）。",
       },
     ],
+    wechatUrl: "https://mp.weixin.qq.com/s/E2kJP-k8AFNlvBLqRIOnqA",
     schedule: [
       {
         date: "Day 1",
@@ -161,7 +169,6 @@ export const camps: Camp[] = [
         author: "2025 冬令营学员",
       },
     ],
-    wechatUrl: "https://mp.weixin.qq.com/s/E2kJP-k8AFNlvBLqRIOnqA",
   },
   {
     slug: "2025-summer",
@@ -173,14 +180,16 @@ export const camps: Camp[] = [
     location: "广西龙胜广南村 + 长沙",
     participants: "17 人（导演 1 · 共创导师 3 · 演员组 9 · 幕后 / 摄影宣传等）",
     status: "completed",
-    cover: "/images/gallery-11.jpg",
+    cover: "/images/mode-summer.jpg",
     gallery: [
-      "/images/gallery-09.jpg",
+      "/images/mode-summer.jpg",
+      "/images/gallery-24.jpg",
+      "/images/gallery-33.jpg",
+      "/images/gallery-46.jpg",
+      "/images/gallery-34.jpg",
+      "/images/gallery-35.jpg",
       "/images/gallery-11.jpg",
       "/images/gallery-12.jpg",
-      "/images/gallery-13.jpg",
-      "/images/gallery-14.jpg",
-      "/images/gallery-10.jpg",
     ],
     mentors: "导演宁淇 · 嘉辰 / 嘎嘎 / April 等工作坊导师",
     venues: ["广南村首演（村民观众）", "长沙挚友营巡演（120+ 观众）"],
@@ -192,11 +201,11 @@ export const camps: Camp[] = [
       "侗寨田野、溪畔围读与赶集",
     ],
     summary:
-      "一月在广南埋下的种子，于七月悄然发芽。十七位伙伴完成《驴得水》排演与打磨：从溪边对词到定妆走位，并走上巡演——一场演给村民，一场在长沙挚友营呈现给更多观众。",
+      "2025 年 7 月 3 日至 14 日，第一届「种戏」夏令营在广西龙胜县广南村顺利举办。十七位来自各地的伙伴用十天时间投入排练、共创与探索。在导演与导师们的带领下，完成了《驴得水》的排演与打磨，并带着这部戏走上巡演：一场在广南村演给村民，一场在长沙挚友营呈现给更多观众。一月在广南埋下的种子，于七月悄然发芽。",
     overview: [
-      "模块一 · 排练与演出：围读、深入人物、溪边对词、青石板走位、定妆，完成广南与长沙两场正式演出。",
-      "模块二 · 戏剧工作坊：制作木偶、设计布景、体验音效与灯光，从幕后理解一场戏的张力。",
-      "模块三 · 在地探索：黄昏稻田、溪边嬉戏、学唱侗歌《欢迎你到侗寨来》，感受山村节奏。",
+      "模块一 · 戏剧排练与演出：从围读剧本开始，溪水边对词，青石板上走位，在妆造下完成定妆照；广南与长沙两场正式演出。",
+      "模块二 · 戏剧工作坊：制作木偶、设计布景、体验音效与灯光，从幕后理解一场戏的构成与张力。",
+      "模块三 · 在地探索：手拉手走进黄昏稻田，溪边嬉戏，学唱侗歌《欢迎你到侗寨来》，感受山村节奏。",
     ],
     productions: ["《驴得水》"],
     productionsDetailed: [
@@ -231,17 +240,27 @@ export const camps: Camp[] = [
       {
         to: "孙恒海",
         excerpt:
-          "你是一个在动荡年代都能靠读书改变命运的知识分子……你想通过教育改变命运，却也在理想与人性面前选择了妥协。",
+          "你是个浪漫的革命主义者……一棵树它的根已经烂了，你怎么能强求它结果呢。或许现在过去的只是一个驴得水，但未来呢？如果不阻止其根，不进行改革，不认清现实，未来只会有千千万万个驴得水。",
       },
       {
-        to: "老婆",
+        to: "一曼",
         excerpt:
-          "大胆的向前走吧！！不管你看到什么、听到了什么，那都只是人生的某一种方式。你可以选择成为任何一种可能的你！",
+          "其实刚看剧本的时候，我是觉得「你怎么这样」，但到后来，一遍又一遍地细读和排练，我慢慢开始理解你的委屈、痛苦、愤怒……如果可以，我希望你生逢其时，能好好读书，好好成长。",
+      },
+      {
+        to: "周铁男",
+        excerpt:
+          "我理解你，又不理解你……你是周铁男，是那个年代曾经怀抱无限梦想的知识分子，也是最终迷失在时代洪流中的一员。而我所能做的，大概只有记住你的故事。",
       },
       {
         to: "佳佳",
         excerpt:
-          "我们素未谋面却又相伴已久。在战火纷争的年代，记得先保护好自己，再为自己坚守的理想信念走下去。",
+          "好久不见，我们素未谋面却又相伴已久……在战火纷争的年代，记得先保护好自己，再为自己坚守的理想信念挺身而出。期待再会！",
+      },
+      {
+        to: "老婆",
+        excerpt:
+          "大胆的向前走吧！！不管你看到什么，听到了什么，那都只是人生的某一种方式！你可以选择成为任何一种可能的你！",
       },
     ],
     quotes: [
@@ -278,13 +297,16 @@ export const camps: Camp[] = [
     location: "湖南黔阳古城 + 中方一中",
     participants: "15 位伙伴 + 导师团队",
     status: "completed",
-    cover: "/images/gallery-19.jpg",
+    cover: "/images/gallery-37.jpg",
     gallery: [
-      "/images/gallery-19.jpg",
-      "/images/gallery-18.jpg",
-      "/images/gallery-17.jpg",
-      "/images/gallery-16.jpg",
-      "/images/gallery-15.jpg",
+      "/images/gallery-37.jpg",
+      "/images/gallery-38.jpg",
+      "/images/gallery-40.jpg",
+      "/images/gallery-41.jpg",
+      "/images/gallery-42.jpg",
+      "/images/gallery-39.jpg",
+      "/images/gallery-48.jpg",
+      "/images/gallery-32.jpg",
     ],
     mentors: "宁淇 · 呱呱 等",
     venues: ["黔阳古城茶馆", "中方一中 / 冬旅人营点"],
@@ -295,10 +317,10 @@ export const camps: Camp[] = [
       "茶馆雨中首演 + 高中生场巡演",
     ],
     summary:
-      "种戏冬令营首次落地湖南怀化黔阳古城。十五位伙伴用四天完成从零到舞台的探索：共同书写剧本、完成灯光音效设计，创作《爱要大声说出口》与《延迟修复》，并在古城茶馆与中方一中完成巡演。",
+      "2026 年 2 月 4 日至 8 日，「种戏」冬令营首次落地湖南省怀化市黔阳古城。十五位伙伴用四天完成从零到舞台的探索：共同书写剧本、完成灯光及音效设计，创作《爱要大声说出口》与《延迟修复》，并在古城茶馆与中方一中 / 冬旅人营点完成巡演。从零到一的舞台经验里，藏着即兴创作的好奇心与团队协作的包容力——尝试戏剧，也许并不像预设的那么艰难。",
     overview: [
-      "Day 1：带着线上共学任务与自创人物破冰，分享「人生碎片」。",
-      "Day 2：表演训练、灯光音效线上学习，按角色主题分组完成剧本初稿。",
+      "Day 1：欢迎与破冰。带着线上共学任务与自创人物，围坐分享「人生碎片」，信任与脆弱在夜晚流转。",
+      "Day 2：表演训练（腹部发声、情绪表达）；线上学习灯光音效；按角色主题分组完成剧本初稿。",
       "Day 3：即兴与肢体、道具音效制作、剧本打磨与排练。",
       "Day 4：彩排冲刺、黔阳演出、中方演出与庆功复盘。",
     ],
@@ -393,10 +415,13 @@ export const camps: Camp[] = [
     location: "浙江嘉兴",
     participants: "演员组 · 幕后组 · 导师团队",
     status: "ongoing",
-    cover: "/images/gallery-12.jpg",
+    openable: false,
+    cover: "/images/mode-summer.jpg",
     gallery: [
+      "/images/gallery-36.jpg",
       "/images/gallery-12.jpg",
-      "/images/gallery-11.jpg",
+      "/images/gallery-34.jpg",
+      "/images/gallery-35.jpg",
       "/images/gallery-14.jpg",
       "/images/gallery-10.jpg",
     ],

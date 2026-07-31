@@ -31,7 +31,7 @@ export function MockupEditorial({ image }: { image: string }) {
           <div className="flex items-start justify-between gap-4">
             <div>
               <p className="text-[11px] font-semibold tracking-[0.35em] text-[#2d6a4f]">
-                ZHONGXI / 种戏
+                THEATRE SEED / 种戏
               </p>
               <p className="mt-1 text-xs text-[#666]">公益戏剧教育档案</p>
             </div>

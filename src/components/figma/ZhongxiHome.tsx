@@ -3,8 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-import { camps as campData } from "@/lib/camps";
-import { stories as storyData } from "@/lib/stories";
+import { camps as campDataZh } from "@/lib/camps";
+import { stories as storyDataZh } from "@/lib/stories";
+import { campsEn } from "@/lib/en/camps";
+import { storiesEn } from "@/lib/en/stories";
+import { homeEn } from "@/lib/en/home";
+import { homeZh } from "@/lib/home";
+import { LanguageSwitch } from "@/components/LanguageSwitch";
+import type { Locale } from "@/lib/locale";
 
 // ── Palette ──────────────────────────────────────────────────────────
 const C = {
@@ -71,7 +77,7 @@ function AnimStat({ num, suffix, label, sub, delay, active }: {
       transition: `opacity 0.7s ${delay}ms, transform 0.7s ${delay}ms`,
     }}>
       <div style={{
-        fontFamily: "'Noto Serif SC', serif",
+        fontFamily: 'var(--font-display), Georgia, serif',
         fontWeight: 700,
         fontSize: 'clamp(44px, 5vw, 64px)',
         color: C.accentLight,
@@ -143,31 +149,33 @@ function SprigLarge({ color = 'rgba(90,138,92,0.12)' }: { color?: string }) {
   )
 }
 
-const NAV_LINKS = [
-  { label: "首页", href: "/" },
-  { label: "关于我们", href: "/about" },
-  { label: "营期与归档", href: "/camps" },
-  { label: "声音与改变", href: "/stories" },
-  { label: "参与支持", href: "/join" },
-];
+function buildCamps(campData: typeof campDataZh, ongoingTag: string, endedTag: string) {
+  return campData.map((c, i) => {
+    const seasonLabel = c.season
+      .replace("令营", "")
+      .replace(" Camp", "");
+    return {
+      slug: c.slug,
+      year: `${c.year} · ${seasonLabel}`,
+      title: c.title,
+      location: c.location,
+      tag: c.status === "ongoing" ? ongoingTag : endedTag,
+      openable: c.openable !== false && c.status !== "ongoing",
+      shade: ["#0C1A0E", "#142318", "#1E3520", "#2D4A2F"][i % 4],
+      cover: c.cover,
+    };
+  });
+}
 
-const CAMPS = campData.map((c, i) => ({
-  slug: c.slug,
-  year: `${c.year} · ${c.season.replace("令营", "")}`,
-  title: c.title,
-  location: c.location,
-  tag: c.status === "ongoing" ? "进行中" : "已结束",
-  shade: ["#0C1A0E", "#142318", "#1E3520", "#2D4A2F"][i % 4],
-  cover: c.cover,
-}));
-
-const VOICES = storyData
-  .filter((s) => s.kind === "student")
-  .slice(0, 3)
-  .map((s) => ({
-    quote: `“${s.text}”`,
-    author: `${s.camp} · ${s.author}`,
-  }));
+function buildVoices(storyData: typeof storyDataZh) {
+  return storyData
+    .filter((s) => s.kind === "student")
+    .slice(0, 3)
+    .map((s) => ({
+      quote: `“${s.text}”`,
+      author: `${s.camp} · ${s.author}`,
+    }));
+}
 
 // ── Seed particle cursor trail ─────────────────────────────────────────
 type Particle = { id: number; x: number; y: number; vx: number; vy: number; life: number; size: number; rotation: number }
@@ -272,7 +280,14 @@ function SeedTrail() {
 }
 
 // ── Main ──────────────────────────────────────────────────────────────
-export default function ZhongxiHome() {
+export default function ZhongxiHome({ locale = "zh" }: { locale?: Locale }) {
+  const t = locale === "en" ? homeEn : homeZh;
+  const campData = locale === "en" ? campsEn : campDataZh;
+  const storyData = locale === "en" ? storiesEn : storyDataZh;
+  const NAV_LINKS = t.nav;
+  const CAMPS = buildCamps(campData, t.archive.ongoingTag, t.archive.endedTag);
+  const VOICES = buildVoices(storyData);
+
   const [scrolled, setScrolled] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [activeVoice, setActiveVoice] = useState(0);
@@ -294,12 +309,12 @@ export default function ZhongxiHome() {
   }, [])
 
   useEffect(() => {
-    const t = setInterval(() => setActiveVoice(v => (v + 1) % VOICES.length), 5500)
-    return () => clearInterval(t)
-  }, [])
+    const timer = setInterval(() => setActiveVoice(v => (v + 1) % VOICES.length), 5500)
+    return () => clearInterval(timer)
+  }, [VOICES.length])
 
   return (
-    <div style={{ fontFamily: "'Noto Sans SC', 'PingFang SC', sans-serif", color: C.text, overflowX: 'hidden' }}>
+    <div className={locale === "en" ? "locale-en" : undefined} style={{ fontFamily: 'var(--font-body), system-ui, sans-serif', color: C.text, overflowX: 'hidden' }}>
       <SeedTrail />
 
       {/* ── CSS keyframes injected ── */}
@@ -368,33 +383,51 @@ export default function ZhongxiHome() {
         boxShadow: scrolled || menuOpen ? '0 1px 0 rgba(45,74,47,0.1)' : 'none',
       }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64 }}>
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
+          <Link href={locale === "en" ? "/en" : "/"} style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
             {/* Circular seal logo */}
             <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
               <circle cx="18" cy="18" r="16.5" stroke={scrolled || menuOpen ? C.accent : 'rgba(242,245,238,0.6)'} strokeWidth="0.8" />
               <circle cx="18" cy="18" r="13" stroke={scrolled || menuOpen ? C.accent : 'rgba(242,245,238,0.3)'} strokeWidth="0.4" strokeDasharray="2 3" />
               <text x="18" y="23" textAnchor="middle"
-                style={{ fontFamily: "'Noto Serif SC', serif", fontSize: 14, fontWeight: 600, fill: scrolled || menuOpen ? C.accent : '#F2F5EE' }}>
-                种
+                style={{ fontFamily: 'var(--font-display), Georgia, serif', fontSize: 14, fontWeight: 600, fill: scrolled || menuOpen ? C.accent : '#F2F5EE' }}>
+                {t.brand.seal}
               </text>
             </svg>
-            <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
-              <span style={{ fontFamily: "'Noto Serif SC', serif", fontWeight: 600, fontSize: 17, color: scrolled || menuOpen ? C.text : '#F2F5EE', letterSpacing: '0.06em' }}>种戏</span>
-              <span style={{ fontFamily: "'Noto Serif SC', serif", fontWeight: 300, fontSize: 9, color: scrolled || menuOpen ? C.textLight : 'rgba(242,245,238,0.5)', letterSpacing: '0.18em', marginTop: 2 }}>ZHONGXI</span>
+            <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.05 }}>
+              <span style={{
+                fontFamily: 'var(--font-display), Georgia, serif',
+                fontWeight: 600,
+                fontSize: locale === "en" ? 18 : 17,
+                color: scrolled || menuOpen ? C.text : '#F2F5EE',
+                letterSpacing: locale === "en" ? '-0.01em' : '0.06em',
+              }}>{t.brand.name}</span>
+              <span style={{
+                fontFamily: locale === "en" ? 'var(--font-body), system-ui, sans-serif' : 'var(--font-display), Georgia, serif',
+                fontWeight: 400,
+                fontSize: locale === "en" ? 10 : 9,
+                color: scrolled || menuOpen ? C.textLight : 'rgba(242,245,238,0.5)',
+                letterSpacing: locale === "en" ? '0.14em' : '0.18em',
+                marginTop: 3,
+                textTransform: locale === "en" ? 'none' as const : undefined,
+              }}>{t.brand.sub}</span>
             </div>
           </Link>
           <nav className="figma-nav-desktop" style={{ display: 'flex', gap: 36 }}>
             {NAV_LINKS.map(l => (
               <Link key={l.label} href={l.href} className="nav-link" style={{
-                fontWeight: 300, fontSize: 13, letterSpacing: '0.08em',
+                fontWeight: 400,
+                fontSize: locale === "en" ? 14 : 13,
+                letterSpacing: locale === "en" ? '0.04em' : '0.08em',
                 color: scrolled || menuOpen ? C.textMid : 'rgba(242,245,238,0.8)',
                 textDecoration: 'none', transition: 'color 0.25s',
               }}>{l.label}</Link>
             ))}
           </nav>
-          <button
+          <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+            <LanguageSwitch locale={locale} solid={scrolled || menuOpen} />
+            <button
             type="button"
-            aria-label="菜单"
+            aria-label={t.menuAria}
             className="figma-nav-mobile-btn"
             onClick={() => setMenuOpen((v) => !v)}
             style={{
@@ -408,6 +441,7 @@ export default function ZhongxiHome() {
             <span style={{ display: 'block', width: 22, height: 1.5, background: 'currentColor', marginBottom: 6 }} />
             <span style={{ display: 'block', width: 22, height: 1.5, background: 'currentColor' }} />
           </button>
+          </div>
         </div>
         {menuOpen && (
           <div style={{ padding: '8px 32px 24px', display: 'flex', flexDirection: 'column', gap: 16 }}>
@@ -416,7 +450,7 @@ export default function ZhongxiHome() {
                 key={l.label}
                 href={l.href}
                 onClick={() => setMenuOpen(false)}
-                style={{ fontFamily: "'Noto Serif SC', serif", fontSize: 18, color: C.text, textDecoration: 'none' }}
+                style={{ fontFamily: 'var(--font-display), Georgia, serif', fontSize: 18, color: C.text, textDecoration: 'none' }}
               >
                 {l.label}
               </Link>
@@ -431,11 +465,23 @@ export default function ZhongxiHome() {
         overflow: 'hidden',
         background: `linear-gradient(160deg, ${C.dark3} 0%, ${C.dark} 100%)`,
       }}>
+        <Image
+          src="/images/gallery-20.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: 'cover', opacity: 0.38, zIndex: 0 }}
+        />
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 1,
+          background: `linear-gradient(160deg, rgba(12,26,14,0.72) 0%, rgba(20,35,24,0.55) 45%, rgba(12,26,14,0.88) 100%)`,
+        }} />
         {/* Parallax decorative sprig left */}
         <div style={{
           position: 'absolute', left: -20, top: '50%',
           transform: `translateY(calc(-50% + ${scrollY * 0.15}px))`,
-          opacity: 0.6, zIndex: 1,
+          opacity: 0.6, zIndex: 2,
           animation: 'float 6s ease-in-out infinite',
         }}>
           <SprigLarge color="rgba(90,138,92,0.18)" />
@@ -444,7 +490,7 @@ export default function ZhongxiHome() {
         <div style={{
           position: 'absolute', right: -20, bottom: '10%',
           transform: `translateY(${scrollY * -0.1}px)`,
-          opacity: 0.5, zIndex: 1,
+          opacity: 0.5, zIndex: 2,
           animation: 'float 8s ease-in-out infinite 2s',
         }}>
           <SprigLarge color="rgba(90,138,92,0.12)" />
@@ -511,28 +557,39 @@ export default function ZhongxiHome() {
             opacity: heroReady ? 1 : 0,
             transition: 'opacity 1s 1.2s',
           }}>
-            ZHONGXI · THEATER · EDUCATION · 2022
+            {t.hero.verticalLabel}
           </div>
 
-          <div style={{ maxWidth: 700 }}>
+          <div style={{ maxWidth: locale === "en" ? 760 : 700 }}>
+            {locale === "en" && (
+              <p style={{
+                fontSize: 11, letterSpacing: '0.22em', fontWeight: 500,
+                color: C.accentLight, marginBottom: 18, textTransform: 'uppercase',
+                opacity: heroReady ? 1 : 0,
+                transition: 'opacity 0.8s 0.25s',
+              }}>
+                种戏 · Theatre Education
+              </p>
+            )}
             <h1 style={{
-              fontFamily: "'Noto Serif SC', serif",
-              fontWeight: 700,
-              fontSize: 'clamp(72px, 11vw, 128px)',
-              lineHeight: 0.95,
+              fontFamily: 'var(--font-display), Georgia, serif',
+              fontWeight: 650,
+              fontSize: locale === "en" ? 'clamp(52px, 7.2vw, 92px)' : 'clamp(72px, 11vw, 128px)',
+              lineHeight: locale === "en" ? 1.02 : 0.95,
               color: '#F2F5EE',
               marginBottom: 8,
-              letterSpacing: '-0.02em',
+              letterSpacing: locale === "en" ? '-0.035em' : '-0.02em',
+              maxWidth: locale === "en" ? '11ch' : undefined,
               opacity: heroReady ? 1 : 0,
               transform: heroReady ? 'none' : 'translateY(32px)',
               transition: 'opacity 0.9s 0.4s, transform 0.9s 0.4s',
             }}>
-              种戏
+              {t.hero.title}
             </h1>
 
             {/* Animated underline */}
             <div style={{
-              height: 2, width: '40%', marginBottom: 28,
+              height: 2, width: locale === "en" ? '28%' : '40%', marginBottom: locale === "en" ? 24 : 28,
               background: `linear-gradient(90deg, ${C.accent}, transparent)`,
               transformOrigin: 'left',
               transform: heroReady ? 'scaleX(1)' : 'scaleX(0)',
@@ -540,52 +597,64 @@ export default function ZhongxiHome() {
             }} />
 
             <p style={{
-              fontFamily: "'Noto Serif SC', serif",
-              fontWeight: 300, fontSize: 'clamp(18px, 2.5vw, 26px)',
-              color: 'rgba(242,245,238,0.7)', marginBottom: 28,
-              letterSpacing: '0.06em', lineHeight: 1.6,
+              fontFamily: 'var(--font-display), Georgia, serif',
+              fontWeight: 400,
+              fontSize: locale === "en" ? 'clamp(20px, 2.2vw, 28px)' : 'clamp(18px, 2.5vw, 26px)',
+              fontStyle: locale === "en" ? "italic" : "normal",
+              color: 'rgba(242,245,238,0.78)', marginBottom: locale === "en" ? 22 : 28,
+              letterSpacing: locale === "en" ? '-0.01em' : '0.06em',
+              lineHeight: locale === "en" ? 1.35 : 1.6,
+              maxWidth: locale === "en" ? 560 : undefined,
               opacity: heroReady ? 1 : 0,
               transform: heroReady ? 'none' : 'translateY(20px)',
               transition: 'opacity 0.8s 0.7s, transform 0.8s 0.7s',
             }}>
-              种下心中戏剧的种子
+              {t.hero.tagline}
             </p>
 
             <p style={{
-              fontWeight: 300, fontSize: 15, lineHeight: 1.9,
-              color: 'rgba(242,245,238,0.5)', marginBottom: 52, maxWidth: 480,
+              fontWeight: 400,
+              fontSize: locale === "en" ? 17 : 15,
+              lineHeight: locale === "en" ? 1.75 : 1.9,
+              color: 'rgba(242,245,238,0.55)',
+              marginBottom: 48,
+              maxWidth: locale === "en" ? 540 : 480,
               opacity: heroReady ? 1 : 0,
               transform: heroReady ? 'none' : 'translateY(20px)',
               transition: 'opacity 0.8s 0.9s, transform 0.8s 0.9s',
             }}>
-              为零基础县域青年提供免费的戏剧教育与舞台实践，在共创与持续中练习表达，在观众面前被真正看见。
+              {t.hero.body}
             </p>
 
             <div style={{
-              display: 'flex', gap: 16, flexWrap: 'wrap',
+              display: 'flex', gap: 14, flexWrap: 'wrap',
               opacity: heroReady ? 1 : 0,
               transform: heroReady ? 'none' : 'translateY(20px)',
               transition: 'opacity 0.8s 1.1s, transform 0.8s 1.1s',
             }}>
-              <Link href="/about" className="btn-primary" style={{
+              <Link href={locale === "en" ? "/en/about" : "/about"} className="btn-primary" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
-                padding: '15px 36px',
+                padding: locale === "en" ? '16px 32px' : '15px 36px',
                 background: C.accent,
                 color: '#F2F5EE',
-                fontWeight: 500, fontSize: 14, letterSpacing: '0.1em',
+                fontWeight: 500,
+                fontSize: locale === "en" ? 13 : 14,
+                letterSpacing: locale === "en" ? '0.06em' : '0.1em',
                 textDecoration: 'none', transition: 'background 0.25s, transform 0.25s',
               }}>
-                了解种戏
+                {t.hero.ctaAbout}
               </Link>
-              <Link href="/camps/2026-summer" className="btn-outline" style={{
+              <Link href={locale === "en" ? "/en/camps" : "/camps"} className="btn-outline" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
-                padding: '14px 36px',
+                padding: locale === "en" ? '15px 28px' : '14px 36px',
                 border: `1px solid rgba(90,138,92,0.45)`,
                 color: C.accentLight,
-                fontWeight: 300, fontSize: 14, letterSpacing: '0.1em',
+                fontWeight: 400,
+                fontSize: locale === "en" ? 13 : 14,
+                letterSpacing: locale === "en" ? '0.06em' : '0.1em',
                 textDecoration: 'none', transition: 'border-color 0.25s, color 0.25s',
               }}>
-                2026 夏令营进行中 →
+                {t.hero.ctaCamps}
               </Link>
             </div>
           </div>
@@ -610,43 +679,49 @@ export default function ZhongxiHome() {
         {/* Decorative large character */}
         <div style={{
           position: 'absolute', right: -40, top: '10%',
-          fontFamily: "'Noto Serif SC', serif",
+          fontFamily: 'var(--font-display), Georgia, serif',
           fontSize: 320, fontWeight: 700,
           color: 'rgba(90,138,92,0.04)',
           lineHeight: 1, userSelect: 'none', pointerEvents: 'none',
           letterSpacing: '-0.05em',
         }}>
-          剧
+          {t.about.watermark}
         </div>
 
         <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative' }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'start' }} className="figma-about-grid">
             <Reveal>
               <div>
-                <p style={{ fontSize: 11, letterSpacing: '0.25em', color: C.accent, marginBottom: 20, fontWeight: 500 }}>ABOUT ZHONGXI</p>
+                <p style={{ fontSize: 11, letterSpacing: '0.25em', color: C.accent, marginBottom: 20, fontWeight: 500 }}>{t.about.eyebrow}</p>
                 <h2 style={{
-                  fontFamily: "'Noto Serif SC', serif",
-                  fontWeight: 600, fontSize: 'clamp(40px, 5vw, 60px)',
-                  lineHeight: 1.1, color: C.text, marginBottom: 32,
+                  fontFamily: 'var(--font-display), Georgia, serif',
+                  fontWeight: 600,
+                  fontSize: locale === "en" ? 'clamp(36px, 4.5vw, 54px)' : 'clamp(40px, 5vw, 60px)',
+                  lineHeight: locale === "en" ? 1.12 : 1.1,
+                  letterSpacing: locale === "en" ? '-0.025em' : undefined,
+                  color: C.text, marginBottom: 28,
                 }}>
-                  关于<br />种戏
+                  {locale === "en" ? (
+                    <>{t.about.line1} {t.about.line2}</>
+                  ) : (
+                    <>{t.about.line1}<br />{t.about.line2}</>
+                  )}
                 </h2>
-                <p style={{ fontSize: 16, lineHeight: 1.95, color: C.textMid, fontWeight: 300, maxWidth: 400 }}>
-                  戏剧为年轻人提供的，不只是一次演出机会，更是一段从「尝试表达」到「被他人听见」的成长旅程。
+                <p style={{
+                  fontSize: locale === "en" ? 17 : 16,
+                  lineHeight: locale === "en" ? 1.75 : 1.95,
+                  color: C.textMid,
+                  fontWeight: 400,
+                  maxWidth: locale === "en" ? 420 : 400,
+                  marginBottom: 36,
+                }}>
+                  {t.about.body}
                 </p>
-                {/* Decorative sprig */}
-                <div style={{ marginTop: 48, opacity: 0.6 }}>
-                  <Sprig color={`rgba(90,138,92,0.4)`} size={80} />
-                </div>
               </div>
             </Reveal>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 0, paddingTop: 8 }}>
-              {[
-                { num: '01', title: '零门槛', desc: '为从未接触过戏剧的年轻人打开大门。导师不设门槛，属于每一个愿意尝试的人。' },
-                { num: '02', title: '纯公益', desc: '导师志愿，学员全程免费：食宿、交通、物资与演出费用由公益资金承担，让戏剧回归教育本质。' },
-                { num: '03', title: '聚焦县城', desc: '服务湖南、广西等PEER县域青年，把有限的公益资源，投向最需要被看见的人。' },
-              ].map((item, i) => (
+              {t.about.pillars.map((item, i) => (
                 <Reveal key={i} delay={i * 120}>
                   <div style={{
                     padding: '36px 0',
@@ -654,12 +729,24 @@ export default function ZhongxiHome() {
                     display: 'grid', gridTemplateColumns: '52px 1fr', gap: 24,
                   }}>
                     <span style={{
-                      fontFamily: "'Noto Serif SC', serif",
+                      fontFamily: 'var(--font-display), Georgia, serif',
                       fontWeight: 300, fontSize: 30, color: C.accentPale, lineHeight: 1,
                     }}>{item.num}</span>
                     <div>
-                      <h3 style={{ fontFamily: "'Noto Serif SC', serif", fontWeight: 600, fontSize: 18, color: C.text, marginBottom: 10 }}>{item.title}</h3>
-                      <p style={{ fontSize: 14, lineHeight: 1.85, color: C.textLight, fontWeight: 300 }}>{item.desc}</p>
+                      <h3 style={{
+                        fontFamily: 'var(--font-display), Georgia, serif',
+                        fontWeight: 600,
+                        fontSize: locale === "en" ? 20 : 18,
+                        color: C.text,
+                        marginBottom: 10,
+                        letterSpacing: locale === "en" ? '-0.015em' : undefined,
+                      }}>{item.title}</h3>
+                      <p style={{
+                        fontSize: locale === "en" ? 15 : 14,
+                        lineHeight: locale === "en" ? 1.7 : 1.85,
+                        color: C.textLight,
+                        fontWeight: 400,
+                      }}>{item.desc}</p>
                     </div>
                   </div>
                 </Reveal>
@@ -695,19 +782,27 @@ export default function ZhongxiHome() {
             transition: 'opacity 0.7s, transform 0.7s',
           }}>
             <p style={{ fontSize: 11, letterSpacing: '0.25em', color: C.accentLight, marginBottom: 16, fontWeight: 500 }}>IMPACT</p>
-            <h2 style={{ fontFamily: "'Noto Serif SC', serif", fontWeight: 600, fontSize: 'clamp(36px, 5vw, 52px)', color: '#F2F5EE', marginBottom: 16 }}>影响力</h2>
-            <p style={{ fontSize: 15, color: 'rgba(242,245,238,0.45)', fontWeight: 300, marginBottom: 80 }}>
-              种子正在发芽：每一届营期，都是一次被认真对待的第一次。
+            <h2 style={{
+              fontFamily: 'var(--font-display), Georgia, serif',
+              fontWeight: 600,
+              fontSize: locale === "en" ? 'clamp(34px, 4.5vw, 48px)' : 'clamp(36px, 5vw, 52px)',
+              letterSpacing: locale === "en" ? '-0.025em' : undefined,
+              color: '#F2F5EE', marginBottom: 16,
+            }}>{t.impact.title}</h2>
+            <p style={{
+              fontSize: locale === "en" ? 16 : 15,
+              color: 'rgba(242,245,238,0.5)',
+              fontWeight: 400,
+              lineHeight: 1.65,
+              maxWidth: locale === "en" ? 520 : undefined,
+              marginBottom: 80,
+            }}>
+              {t.impact.subtitle}
             </p>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }} className="figma-stats-grid">
-            {[
-              { num: 50, suffix: '+', label: '累计学员', sub: '三届近五十名伙伴' },
-              { num: 95, suffix: '%+', label: '零基础比例', sub: '第一次站上舞台' },
-              { num: 8, suffix: '+', label: '演出场次', sub: '乡村 · 古城 · 城市剧演' },
-              { num: 4, suffix: '', label: '营期届数', sub: '每届营均持续生长' },
-            ].map((s, i) => (
+            {t.impact.stats.map((s, i) => (
               <div key={i} style={{
                 padding: '0 0 0 40px',
                 borderLeft: i === 0 ? 'none' : `1px solid rgba(90,138,92,0.15)`,
@@ -745,23 +840,41 @@ export default function ZhongxiHome() {
             <Reveal>
               <div>
                 <p style={{ fontSize: 11, letterSpacing: '0.25em', color: C.accent, marginBottom: 16, fontWeight: 500 }}>ARCHIVE</p>
-                <h2 style={{ fontFamily: "'Noto Serif SC', serif", fontWeight: 600, fontSize: 'clamp(36px, 5vw, 52px)', color: C.text, lineHeight: 1.1 }}>历届营期</h2>
+                <h2 style={{
+                  fontFamily: 'var(--font-display), Georgia, serif',
+                  fontWeight: 600,
+                  fontSize: locale === "en" ? 'clamp(34px, 4.5vw, 48px)' : 'clamp(36px, 5vw, 52px)',
+                  letterSpacing: locale === "en" ? '-0.025em' : undefined,
+                  color: C.text,
+                  lineHeight: 1.12,
+                }}>{t.archive.title}</h2>
               </div>
             </Reveal>
             <Reveal delay={200} style={{ maxWidth: 300, textAlign: 'right' }}>
-              <p style={{ fontSize: 14, color: C.textLight, fontWeight: 300, lineHeight: 1.8 }}>
-                从广南侗寨到黔阳古城，再到嘉兴舞台——每一届都值得被完整记住。
+              <p style={{
+                fontSize: locale === "en" ? 15 : 14,
+                color: C.textLight,
+                fontWeight: 400,
+                lineHeight: 1.7,
+              }}>
+                {t.archive.intro}
               </p>
             </Reveal>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }} className="figma-camp-grid">
-            {CAMPS.map((camp, i) => (
-              <Reveal key={camp.slug} delay={i * 100}>
-                <Link href={`/camps/${camp.slug}`} className="camp-card" style={{
-                  position: 'relative', aspectRatio: '3/4', overflow: 'hidden',
-                  cursor: 'pointer', background: camp.shade, display: 'block', textDecoration: 'none',
-                }}>
+            {CAMPS.map((camp, i) => {
+              const cardStyle = {
+                position: 'relative' as const,
+                aspectRatio: '3/4',
+                overflow: 'hidden' as const,
+                cursor: camp.openable ? 'pointer' : 'default',
+                background: camp.shade,
+                display: 'block' as const,
+                textDecoration: 'none' as const,
+              };
+              const body = (
+                <>
                   <div className="camp-img" style={{
                     position: 'absolute', inset: 0,
                     transition: 'transform 0.7s ease',
@@ -773,47 +886,71 @@ export default function ZhongxiHome() {
                     }} />
                   </div>
 
-                  {/* Sprig decoration */}
                   <div style={{ position: 'absolute', top: 16, right: 16, opacity: 0.4 }}>
                     <Sprig color="rgba(139,184,140,0.5)" size={48} />
                   </div>
 
-                  {/* Tag */}
                   <div style={{
                     position: 'absolute', top: 16, left: 16,
                     padding: '4px 12px',
-                    background: camp.tag === '进行中' ? C.accent : 'rgba(242,245,238,0.1)',
-                    color: camp.tag === '进行中' ? '#F2F5EE' : 'rgba(242,245,238,0.6)',
+                    background: camp.tag === t.archive.ongoingTag ? C.accent : 'rgba(242,245,238,0.1)',
+                    color: camp.tag === t.archive.ongoingTag ? '#F2F5EE' : 'rgba(242,245,238,0.6)',
                     fontSize: 11, letterSpacing: '0.1em', fontWeight: 500,
                   }}>
                     {camp.tag}
                   </div>
 
-                  {/* Hover overlay — vivid sage green wash */}
-                  <div className="camp-overlay" style={{
-                    position: 'absolute', inset: 0,
-                    background: `linear-gradient(160deg, rgba(90,138,92,0.38) 0%, rgba(30,53,32,0.55) 100%)`,
-                    opacity: 0, transition: 'opacity 0.4s ease',
-                  }} />
+                  {camp.openable && (
+                    <div className="camp-overlay" style={{
+                      position: 'absolute', inset: 0,
+                      background: `linear-gradient(160deg, rgba(90,138,92,0.38) 0%, rgba(30,53,32,0.55) 100%)`,
+                      opacity: 0, transition: 'opacity 0.4s ease',
+                    }} />
+                  )}
 
-                  {/* Content */}
                   <div style={{
                     position: 'absolute', bottom: 0, left: 0, right: 0,
                     padding: 24,
                     background: 'linear-gradient(to top, rgba(12,26,14,0.95) 0%, transparent 100%)',
                   }}>
-                    <p className="camp-label" style={{ fontFamily: "'Noto Serif SC', serif", fontWeight: 300, fontSize: 11, color: C.accentLight, letterSpacing: '0.12em', marginBottom: 8, transition: 'color 0.4s' }}>{camp.year}</p>
-                    <h3 className="camp-title" style={{ fontFamily: "'Noto Serif SC', serif", fontWeight: 600, fontSize: 16, color: '#F2F5EE', lineHeight: 1.45, marginBottom: 6, transition: 'color 0.4s' }}>{camp.title}</h3>
+                    <p className="camp-label" style={{ fontFamily: 'var(--font-display), Georgia, serif', fontWeight: 300, fontSize: 11, color: C.accentLight, letterSpacing: '0.12em', marginBottom: 8, transition: 'color 0.4s' }}>{camp.year}</p>
+                    <h3 className="camp-title" style={{
+                      fontFamily: 'var(--font-display), Georgia, serif',
+                      fontWeight: 600,
+                      fontSize: locale === "en" ? 15 : 16,
+                      color: '#F2F5EE',
+                      lineHeight: 1.35,
+                      marginBottom: 6,
+                      letterSpacing: locale === "en" ? '-0.015em' : undefined,
+                      transition: 'color 0.4s',
+                    }}>{camp.title}</h3>
                     <p style={{ fontSize: 12, color: 'rgba(242,245,238,0.45)', fontWeight: 300 }}>{camp.location}</p>
+                    {!camp.openable && (
+                      <p style={{ fontSize: 11, color: 'rgba(139,184,140,0.7)', marginTop: 8, letterSpacing: '0.06em' }}>{t.archive.archiveSoon}</p>
+                    )}
                   </div>
-                </Link>
-              </Reveal>
-            ))}
+                </>
+              );
+
+              return (
+                <Reveal key={camp.slug} delay={i * 100}>
+                  {camp.openable ? (
+                    <Link href={`${locale === "en" ? "/en" : ""}/camps/${camp.slug}`} className="camp-card" style={cardStyle}>
+                      {body}
+                    </Link>
+                  ) : (
+                    <div className="camp-card" style={cardStyle} aria-disabled="true">
+                      {body}
+                    </div>
+                  )}
+                </Reveal>
+              );
+            })}
           </div>
 
           <Reveal delay={300}>
             <div style={{ marginTop: 48, textAlign: 'center' }}>
-              <Link href="/camps" style={{
+              <Link href={locale === "en" ? "/en/camps" : "/camps"} style={{
                 display: 'inline-flex', alignItems: 'center', gap: 10,
                 fontSize: 13, letterSpacing: '0.12em', color: C.textLight,
                 textDecoration: 'none',
@@ -823,7 +960,7 @@ export default function ZhongxiHome() {
                 onMouseEnter={e => (e.currentTarget.style.color = C.accent)}
                 onMouseLeave={e => (e.currentTarget.style.color = C.textLight)}
               >
-                进入营期归档 →
+                {t.archive.cta}
               </Link>
             </div>
           </Reveal>
@@ -836,12 +973,12 @@ export default function ZhongxiHome() {
         <div style={{
           position: 'absolute', left: '50%', top: '50%',
           transform: 'translate(-50%, -50%)',
-          fontFamily: "'Noto Serif SC', serif",
+          fontFamily: 'var(--font-display), Georgia, serif',
           fontSize: 220, fontWeight: 700,
           color: 'rgba(90,138,92,0.03)',
           whiteSpace: 'nowrap', userSelect: 'none', pointerEvents: 'none',
         }}>
-          声音与改变
+          {t.voices.watermark}
         </div>
 
         <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative' }}>
@@ -850,30 +987,19 @@ export default function ZhongxiHome() {
             <Reveal>
               <div style={{
                 width: '100%', aspectRatio: '4/5',
-                background: `linear-gradient(160deg, ${C.dark3}, ${C.dark})`,
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
                 position: 'relative', overflow: 'hidden',
               }}>
-                {/* Grid */}
+                <Image
+                  src="/images/voices-embrace.jpg"
+                  alt={t.voices.imgAlt}
+                  fill
+                  sizes="(max-width:900px) 100vw, 50vw"
+                  style={{ objectFit: 'cover' }}
+                />
                 <div style={{
                   position: 'absolute', inset: 0,
-                  backgroundImage: `
-                    repeating-linear-gradient(0deg, rgba(90,138,92,0.06) 0px, rgba(90,138,92,0.06) 1px, transparent 1px, transparent 48px),
-                    repeating-linear-gradient(90deg, rgba(90,138,92,0.06) 0px, rgba(90,138,92,0.06) 1px, transparent 1px, transparent 48px)
-                  `,
+                  background: 'linear-gradient(160deg, rgba(12,26,14,0.15), rgba(12,26,14,0.55))',
                 }} />
-                {/* Large decorative Chinese char */}
-                <span style={{
-                  fontFamily: "'Noto Serif SC', serif",
-                  fontWeight: 700,
-                  fontSize: 'clamp(100px, 16vw, 180px)',
-                  color: 'rgba(90,138,92,0.12)',
-                  lineHeight: 1, userSelect: 'none',
-                  animation: 'shimmer 4s ease-in-out infinite',
-                }}>
-                  声
-                </span>
-                {/* Accent lines */}
                 <div style={{
                   position: 'absolute', bottom: 32, left: 32, right: 32,
                   height: 1,
@@ -910,15 +1036,18 @@ export default function ZhongxiHome() {
                   }}>
                     {/* Opening quote mark */}
                     <div style={{
-                      fontFamily: "'Noto Serif SC', serif",
+                      fontFamily: 'var(--font-display), Georgia, serif',
                       fontSize: 72, lineHeight: 0.6,
                       color: `rgba(90,138,92,0.2)`,
                       marginBottom: 16, paddingLeft: 24,
                     }}>"</div>
                     <blockquote style={{
-                      fontFamily: "'Noto Serif SC', serif",
-                      fontWeight: 400, fontSize: 'clamp(17px, 2.2vw, 22px)',
-                      lineHeight: 1.75, color: C.text, marginBottom: 28,
+                      fontFamily: 'var(--font-display), Georgia, serif',
+                      fontWeight: 400,
+                      fontSize: locale === "en" ? 'clamp(18px, 2vw, 23px)' : 'clamp(17px, 2.2vw, 22px)',
+                      lineHeight: locale === "en" ? 1.55 : 1.75,
+                      letterSpacing: locale === "en" ? '-0.01em' : undefined,
+                      color: C.text, marginBottom: 28,
                       borderLeft: `3px solid ${C.accent}`,
                       paddingLeft: 24,
                     }}>
@@ -945,7 +1074,7 @@ export default function ZhongxiHome() {
               </div>
 
               <div style={{ marginTop: 44, paddingLeft: 24 }}>
-                <Link href="/stories" style={{
+                <Link href={locale === "en" ? "/en/stories" : "/stories"} style={{
                   fontSize: 13, color: C.textLight, textDecoration: 'none',
                   borderBottom: `1px solid rgba(90,138,92,0.25)`, paddingBottom: 3,
                   letterSpacing: '0.1em', transition: 'color 0.2s',
@@ -953,7 +1082,7 @@ export default function ZhongxiHome() {
                   onMouseEnter={e => (e.currentTarget.style.color = C.accent)}
                   onMouseLeave={e => (e.currentTarget.style.color = C.textLight)}
                 >
-                  更多声音与改变 →
+                  {t.voices.moreCta}
                 </Link>
               </div>
             </div>
@@ -988,14 +1117,27 @@ export default function ZhongxiHome() {
         <Reveal>
           <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 40 }}>
             <div>
-              <h2 style={{ fontFamily: "'Noto Serif SC', serif", fontWeight: 600, fontSize: 'clamp(30px, 4vw, 48px)', color: '#F2F5EE', marginBottom: 14 }}>
-                参与种戏
+              <h2 style={{
+                fontFamily: 'var(--font-display), Georgia, serif',
+                fontWeight: 600,
+                fontSize: locale === "en" ? 'clamp(28px, 3.8vw, 44px)' : 'clamp(30px, 4vw, 48px)',
+                letterSpacing: locale === "en" ? '-0.025em' : undefined,
+                color: '#F2F5EE',
+                marginBottom: 14,
+              }}>
+                {t.support.title}
               </h2>
-              <p style={{ fontSize: 16, color: 'rgba(242,245,238,0.65)', fontWeight: 300, maxWidth: 480, lineHeight: 1.8 }}>
-                无论是成为导师志愿者、公益捐助者，还是分享种戏的故事——你的参与，让更多种子有机会发芽。
+              <p style={{
+                fontSize: locale === "en" ? 17 : 16,
+                color: 'rgba(242,245,238,0.7)',
+                fontWeight: 400,
+                maxWidth: 520,
+                lineHeight: 1.7,
+              }}>
+                {t.support.body}
               </p>
             </div>
-            <Link href="/join" className="support-btn" style={{
+            <Link href={locale === "en" ? "/en/join" : "/join"} className="support-btn" style={{
               display: 'inline-flex', alignItems: 'center', gap: 10,
               padding: '18px 40px',
               background: C.dark,
@@ -1003,7 +1145,7 @@ export default function ZhongxiHome() {
               fontWeight: 500, fontSize: 14, letterSpacing: '0.12em',
               textDecoration: 'none', transition: 'background 0.25s, transform 0.25s',
             }}>
-              了解如何支持 →
+              {t.support.cta}
             </Link>
           </div>
         </Reveal>
@@ -1016,15 +1158,15 @@ export default function ZhongxiHome() {
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
                 <Sprig color="rgba(139,184,140,0.4)" size={32} />
-                <span style={{ fontFamily: "'Noto Serif SC', serif", fontWeight: 600, fontSize: 22, color: '#F2F5EE' }}>种戏</span>
+                <span style={{ fontFamily: 'var(--font-display), Georgia, serif', fontWeight: 600, fontSize: 22, color: '#F2F5EE' }}>{t.brand.name}</span>
               </div>
               <p style={{ fontSize: 13, color: 'rgba(242,245,238,0.4)', fontWeight: 300, lineHeight: 1.9, maxWidth: 280 }}>
-                种下心中戏剧的种子<br />
-                零门槛 · 纯公益 · 聚焦县城
+                {t.footer.taglineLines[0]}<br />
+                {t.footer.taglineLines[1]}
               </p>
             </div>
             <div>
-              <p style={{ fontSize: 11, letterSpacing: '0.2em', color: C.accentLight, marginBottom: 20, fontWeight: 500 }}>导航</p>
+              <p style={{ fontSize: 11, letterSpacing: '0.2em', color: C.accentLight, marginBottom: 20, fontWeight: 500 }}>{t.footer.navLabel}</p>
               {NAV_LINKS.map(l => (
                 <Link key={l.label} href={l.href} className="footer-link" style={{
                   display: 'block', fontSize: 13, color: 'rgba(242,245,238,0.45)',
@@ -1033,19 +1175,19 @@ export default function ZhongxiHome() {
               ))}
             </div>
             <div>
-              <p style={{ fontSize: 11, letterSpacing: '0.2em', color: C.accentLight, marginBottom: 20, fontWeight: 500 }}>联系</p>
+              <p style={{ fontSize: 11, letterSpacing: '0.2em', color: C.accentLight, marginBottom: 20, fontWeight: 500 }}>{t.footer.contactLabel}</p>
               <p style={{ fontSize: 13, color: 'rgba(242,245,238,0.45)', fontWeight: 300, lineHeight: 1.9 }}>
-                微信公众号<br />
+                {t.footer.wechatLabel}<br />
                 PEER毅恒挚友<br /><br />
                 <span style={{ fontSize: 12, color: 'rgba(242,245,238,0.25)' }}>
-                  关注公众号并回复「种戏」了解详情
+                  {t.footer.wechatHint}
                 </span>
               </p>
             </div>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <p style={{ fontSize: 12, color: 'rgba(242,245,238,0.2)', fontWeight: 300 }}>
-              © 2025 种戏 · 种下心中戏剧的种子
+              {t.footer.copyright}
             </p>
             <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
               <div style={{ width: 24, height: 1, background: `rgba(90,138,92,0.3)` }} />

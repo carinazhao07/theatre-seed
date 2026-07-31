@@ -4,17 +4,27 @@ import { usePathname } from "next/navigation";
 import { Atmosphere } from "@/components/Atmosphere";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { LangSetter } from "@/components/LangSetter";
+import { localeFromPath } from "@/lib/locale";
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const isHome = pathname === "/";
+  const locale = localeFromPath(pathname);
+  const normalized = pathname.replace(/\/$/, "") || "/";
+  const isHome = normalized === "/" || normalized === "/en";
 
   if (isHome) {
-    return <>{children}</>;
+    return (
+      <>
+        <LangSetter locale={locale} />
+        {children}
+      </>
+    );
   }
 
   return (
     <>
+      <LangSetter locale={locale} />
       <Atmosphere />
       <Header />
       <main className="flex-1">{children}</main>

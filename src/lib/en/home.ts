@@ -1,0 +1,80 @@
+export const homeEn = {
+  nav: [
+    { label: "Home", href: "/en" },
+    { label: "About", href: "/en/about" },
+    { label: "Camps & Archive", href: "/en/camps" },
+    { label: "Voices", href: "/en/stories" },
+    { label: "Get Involved", href: "/en/join" },
+  ],
+  brand: { seal: "T", name: "Theatre Seed", sub: "种戏" },
+  hero: {
+    title: "Theatre Seed",
+    verticalLabel: "THEATRE SEED · THEATRE · EDUCATION",
+    tagline: "Planting the seed of theatre within",
+    body: "Free theatre education and stage practice for county youth with no prior experience—learning to express through co-creation, and to be truly seen by an audience.",
+    ctaAbout: "About Theatre Seed",
+    ctaCamps: "Browse camp archive →",
+  },
+  about: {
+    eyebrow: "ABOUT THEATRE SEED",
+    line1: "About",
+    line2: "Theatre Seed",
+    body: "Theatre offers young people more than a single performance—it is a journey from first trying to speak to finally being heard by others.",
+    watermark: "DRAMA",
+    pillars: [
+      {
+        num: "01",
+        title: "No barriers",
+        desc: "We open the door to young people who have never tried theatre. The stage belongs to everyone willing to begin.",
+      },
+      {
+        num: "02",
+        title: "Fully nonprofit",
+        desc: "Mentors volunteer; participants join free. Lodging, travel, materials, and production costs are covered by public-interest funds—so theatre can return to its roots in education.",
+      },
+      {
+        num: "03",
+        title: "County-focused",
+        desc: "We serve PEER county youth in Hunan, Guangxi, and beyond—directing limited resources toward those who most need to be seen.",
+      },
+    ],
+    imgAlt: "Participants in voice training",
+  },
+  impact: {
+    title: "Impact",
+    subtitle: "The seeds are sprouting: every camp season is a first time taken seriously.",
+    stats: [
+      { num: 50, suffix: "+", label: "Participants", sub: "Nearly fifty across three cohorts" },
+      { num: 95, suffix: "%+", label: "First-timers", sub: "First time on stage" },
+      { num: 8, suffix: "+", label: "Performances", sub: "Villages · old towns · city theatres" },
+      { num: 4, suffix: "", label: "Camp seasons", sub: "Still growing every season" },
+    ],
+  },
+  archive: {
+    title: "Past camps",
+    intro: "From Guangnan Dong Village to Qianyang Ancient Town to stages in Jiaxing—every season deserves to be remembered in full.",
+    ongoingTag: "In progress",
+    endedTag: "Archived",
+    archiveSoon: "Archive opening soon",
+    cta: "Enter camp archive →",
+  },
+  voices: {
+    watermark: "Voices & Change",
+    imgAlt: "Camp partners",
+    moreCta: "More voices & stories →",
+  },
+  support: {
+    title: "Join Theatre Seed",
+    body: "Whether you become a mentor volunteer, a donor, or someone who shares Theatre Seed's story—your participation gives more seeds a chance to sprout.",
+    cta: "Learn how to support →",
+  },
+  footer: {
+    taglineLines: ["Planting the seed of theatre within", "No barriers · Fully nonprofit · County-focused"],
+    navLabel: "Navigation",
+    contactLabel: "Contact",
+    wechatLabel: "WeChat",
+    wechatHint: "Follow the account and reply「种戏」for details",
+    copyright: `© ${new Date().getFullYear()} Theatre Seed · Planting the seed of theatre within`,
+  },
+  menuAria: "Menu",
+} as const;

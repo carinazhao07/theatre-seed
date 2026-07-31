@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -42,8 +43,19 @@ const channels = [
 export default function JoinPage() {
   return (
     <>
-      <section className="bg-cream-dark pt-28 pb-16 text-white md:pt-36 md:pb-20">
-        <div className="mx-auto max-w-6xl px-5 md:px-8">
+      <section className="relative overflow-hidden bg-cream-dark pt-28 pb-16 text-white md:pt-36 md:pb-20">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/gallery-31.jpg"
+            alt=""
+            fill
+            className="object-cover opacity-40"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-cream-dark/70" />
+        </div>
+        <div className="relative mx-auto max-w-6xl px-5 md:px-8">
           <Reveal>
             <p className="text-xs tracking-[0.25em] text-mint uppercase">
               Get Involved
@@ -57,6 +69,25 @@ export default function JoinPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+        <div className="mb-14 grid gap-4 md:grid-cols-3">
+          {[
+            { src: "/images/gallery-21.jpg", alt: "训练现场" },
+            { src: "/images/gallery-25.jpg", alt: "幕后准备" },
+            { src: "/images/gallery-37.jpg", alt: "营期伙伴" },
+          ].map((img, i) => (
+            <Reveal key={img.src} delay={i * 0.06}>
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width:768px) 100vw, 33vw"
+                />
+              </div>
+            </Reveal>
+          ))}
+        </div>
         <div className="grid gap-6 lg:grid-cols-3">
           {channels.map((ch, i) => (
             <Reveal key={ch.id} delay={i * 0.08}>
@@ -124,10 +155,10 @@ export default function JoinPage() {
               </p>
               <div className="flex flex-wrap justify-center gap-4 pt-4">
                 <Link
-                  href="/camps/2026-summer"
+                  href="/camps"
                   className="bg-forest px-6 py-3 text-sm text-mint transition hover:bg-mid-green"
                 >
-                  查看 2026 夏令营
+                  查看营期归档
                 </Link>
                 <Link
                   href="/about"

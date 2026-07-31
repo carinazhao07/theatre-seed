@@ -1,6 +1,8 @@
 import type { ScheduleItem } from "@/lib/camps";
+import type { Locale } from "@/lib/locale";
+import { uiEn } from "@/lib/en/site";
 
-const phaseStyle: Record<
+const phaseStyleZh: Record<
   ScheduleItem["phase"],
   { label: string; className: string }
 > = {
@@ -12,13 +14,25 @@ const phaseStyle: Record<
   wrap: { label: "收束", className: "bg-cream-dark text-mint" },
 };
 
-export function Schedule({ items }: { items: ScheduleItem[] }) {
+export function Schedule({
+  items,
+  locale = "zh",
+}: {
+  items: ScheduleItem[];
+  locale?: Locale;
+}) {
   return (
     <div className="relative">
       <div className="absolute top-0 bottom-0 left-[1.15rem] w-px bg-mint/50 md:left-1/2" />
       <ul className="space-y-8">
         {items.map((item, i) => {
-          const phase = phaseStyle[item.phase];
+          const phase =
+            locale === "en"
+              ? {
+                  label: uiEn.phase[item.phase],
+                  className: phaseStyleZh[item.phase].className,
+                }
+              : phaseStyleZh[item.phase];
           const left = i % 2 === 0;
           return (
             <li
