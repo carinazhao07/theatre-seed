@@ -4,9 +4,10 @@ export const siteEn = {
   tagline: "Planting the seed of theatre within",
   description:
     "Theatre Seed is a free, no-barrier theatre education project for young people in China’s county regions—offering stage practice and creative collaboration at no cost.",
-  wechat: "PEER毅恒挚友",
+  contactName: "Ningqi (Carina) Zhao",
+  contactEmail: "carina.zhao@yale.edu",
   contactNote:
-    "Follow the WeChat account PEER毅恒挚友, or reach out to the Theatre Seed team for applications and partnerships.",
+    "For applications, partnerships, or support, email project lead Ningqi (Carina) Zhao at carina.zhao@yale.edu.",
 };
 
 export const navEn = [

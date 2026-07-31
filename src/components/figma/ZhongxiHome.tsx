@@ -1177,11 +1177,13 @@ export default function ZhongxiHome({ locale = "zh" }: { locale?: Locale }) {
             <div>
               <p style={{ fontSize: 11, letterSpacing: '0.2em', color: C.accentLight, marginBottom: 20, fontWeight: 500 }}>{t.footer.contactLabel}</p>
               <p style={{ fontSize: 13, color: 'rgba(242,245,238,0.45)', fontWeight: 300, lineHeight: 1.9 }}>
-                {t.footer.wechatLabel}<br />
-                PEER毅恒挚友<br /><br />
-                <span style={{ fontSize: 12, color: 'rgba(242,245,238,0.25)' }}>
-                  {t.footer.wechatHint}
-                </span>
+                {t.footer.contactLead}<br />
+                <a
+                  href={`mailto:${t.footer.contactEmail}`}
+                  style={{ color: C.mint, textDecoration: 'none' }}
+                >
+                  {t.footer.contactEmail}
+                </a>
               </p>
             </div>
           </div>

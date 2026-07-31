@@ -148,10 +148,16 @@ export default function JoinPage() {
             />
             <div className="mt-2 space-y-4">
               <p className="font-display text-2xl text-forest md:text-3xl">
-                微信公众号 · {site.wechat}
+                负责人 · 赵宁淇
               </p>
+              <a
+                href={`mailto:${site.contactEmail}`}
+                className="inline-block text-base text-mid-green transition hover:text-forest md:text-lg"
+              >
+                {site.contactEmail}
+              </a>
               <p className="text-sm text-ink-muted">
-                报名问卷、导师志愿与赞助合作材料可在沟通后发送。项目介绍文字版亦可按需提供。
+                报名、导师志愿与赞助合作，欢迎直接发邮件沟通。项目介绍文字版亦可按需提供。
               </p>
               <div className="flex flex-wrap justify-center gap-4 pt-4">
                 <Link

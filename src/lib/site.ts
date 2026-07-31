@@ -4,8 +4,10 @@ export const site = {
   tagline: "种下心中戏剧的种子",
   description:
     "「种戏」是零门槛、纯公益、聚焦县域的公益戏剧教育项目，为欠发达地区青年提供免费的戏剧体验与舞台实践。",
-  wechat: "PEER毅恒挚友",
-  contactNote: "关注公众号 PEER毅恒挚友，或联系种戏团队了解报名与合作。",
+  contactName: "赵宁淇",
+  contactEmail: "carina.zhao@yale.edu",
+  contactNote:
+    "如需了解报名、合作或支持，请发邮件给负责人赵宁淇：carina.zhao@yale.edu",
 };
 
 export const nav = [

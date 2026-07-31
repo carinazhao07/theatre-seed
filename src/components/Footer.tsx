@@ -47,13 +47,18 @@ export function Footer() {
             {locale === "en" ? "Contact" : "联系"}
           </p>
           <p className="mt-4 text-sm leading-relaxed text-white/75">
-            {locale === "en" ? "WeChat" : "微信公众号"}
+            {locale === "en"
+              ? "Email project lead"
+              : "发邮件给负责人"}
             <br />
-            <span className="text-mint">{s.wechat}</span>
+            <span className="text-mint">{s.contactName}</span>
           </p>
-          <p className="mt-4 text-xs leading-relaxed text-white/45">
-            {s.contactNote}
-          </p>
+          <a
+            href={`mailto:${s.contactEmail}`}
+            className="mt-3 inline-block text-sm text-mint transition hover:text-white"
+          >
+            {s.contactEmail}
+          </a>
         </div>
       </div>
       <div className="border-t border-white/10 py-5 text-center text-xs text-white/35">

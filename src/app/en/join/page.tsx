@@ -112,8 +112,14 @@ export default function JoinPageEn() {
             />
             <div className="mt-2 space-y-4">
               <p className="font-display text-2xl text-forest md:text-3xl">
-                {contact.wechatLabel} {siteEn.wechat}
+                {contact.lead}
               </p>
+              <a
+                href={`mailto:${contact.email}`}
+                className="inline-block text-base text-mid-green transition hover:text-forest md:text-lg"
+              >
+                {contact.email}
+              </a>
               <p className="text-sm text-ink-muted">{contact.note}</p>
               <div className="flex flex-wrap justify-center gap-4 pt-4">
                 <Link
