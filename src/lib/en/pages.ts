@@ -73,7 +73,6 @@ export const aboutEn = {
     cta: "Visit PEER website →",
     href: "https://peerchina.org/",
   },
-  bannerAlt: "Learning together by the stream",
 };
 
 export const campsPageEn = {

@@ -64,7 +64,7 @@ function PrincipleIcon({ type }: { type: "door" | "gift" | "pin" }) {
 }
 
 export default function AboutPageEn() {
-  const { hero, founder, journey, principles, abilities, partners, bannerAlt } = aboutEn;
+  const { hero, founder, journey, principles, abilities, partners } = aboutEn;
 
   return (
     <>
@@ -147,17 +147,6 @@ export default function AboutPageEn() {
             </ol>
           </div>
         </div>
-      </section>
-
-      <section className="relative h-[42vw] min-h-[220px] max-h-[420px] overflow-hidden md:h-[36vw]">
-        <Image
-          src="/images/gallery-24.jpg"
-          alt={bannerAlt}
-          fill
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-paper/30 via-transparent to-paper/40" />
       </section>
 
       <SeedDivider />

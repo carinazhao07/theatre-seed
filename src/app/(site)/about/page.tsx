@@ -201,17 +201,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="relative h-[42vw] min-h-[220px] max-h-[420px] overflow-hidden md:h-[36vw]">
-        <Image
-          src="/images/gallery-24.jpg"
-          alt="溪畔共学"
-          fill
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-paper/30 via-transparent to-paper/40" />
-      </section>
-
       <SeedDivider />
 
       <section className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">

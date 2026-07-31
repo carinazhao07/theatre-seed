@@ -101,16 +101,12 @@ export function CampArchiveView({
   const photos = pickPhotos(camp);
   const showGalleryEmbeds = photos.length > 0 && camp.modules.length > 0;
   const diptych = showGalleryEmbeds ? photos.slice(0, 2) : [];
-  const breakPhoto = showGalleryEmbeds ? (photos[2] ?? null) : null;
-  const modulePhotos = photos.slice(3);
+  const modulePhotos = photos.slice(showGalleryEmbeds ? 2 : 0);
   const photoForModule = (i: number) =>
     modulePhotos[i % Math.max(modulePhotos.length, 1)] ??
     photos[i % Math.max(photos.length, 1)];
 
-  const used = new Set<string>([
-    ...diptych,
-    ...(breakPhoto ? [breakPhoto] : []),
-  ]);
+  const used = new Set<string>([...diptych]);
   camp.modules.forEach((_, i) => {
     if (photos.length > 0) used.add(photoForModule(i));
   });
@@ -221,19 +217,6 @@ export function CampArchiveView({
               </Reveal>
             )}
           </div>
-        </section>
-      )}
-
-      {breakPhoto && (
-        <section className="relative h-[42vw] min-h-[220px] max-h-[420px] overflow-hidden">
-          <Image
-            src={breakPhoto}
-            alt=""
-            fill
-            className="object-cover"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-paper/25 via-transparent to-paper/35" />
         </section>
       )}
 
