@@ -1180,7 +1180,7 @@ export default function ZhongxiHome({ locale = "zh" }: { locale?: Locale }) {
                 {t.footer.contactLead}<br />
                 <a
                   href={`mailto:${t.footer.contactEmail}`}
-                  style={{ color: C.mint, textDecoration: 'none' }}
+                  style={{ color: C.accentLight, textDecoration: 'none' }}
                 >
                   {t.footer.contactEmail}
                 </a>
