@@ -81,7 +81,7 @@ export default function CampsPage() {
               <div className="p-8">
               <p className="text-xs tracking-[0.2em] text-mid-green uppercase">Winter</p>
               <h2 className="mt-3 font-display text-3xl text-forest">种戏冬令营</h2>
-              <p className="mt-2 text-sm text-ink-muted">3–5 天 · 短周期高强度共创</p>
+              <p className="mt-2 text-sm text-ink-muted">5–7 天 · 短周期高强度共创</p>
               <ul className="mt-6 space-y-3 text-sm leading-relaxed text-ink-muted">
                 <li>· 地点设在县城或乡村（广南村、黔阳古城…），沉浸创作</li>
                 <li>· 核心模式：共创 + 短剧演出，几天内从灵感到舞台</li>
@@ -111,7 +111,7 @@ export default function CampsPage() {
                 <li>· 常采用「县域 + 城市」双场地（如广南 + 长沙）</li>
                 <li>· 核心模式：经典剧目完整排演 + 多场巡演</li>
                 <li>· 线上共学、试镜、围读、工作坊、定妆与技术合成</li>
-                <li>· 已完成：2025《驴得水》双场；进行中：2026 嘉兴十一日三场演出</li>
+                <li>· 已完成：2025《驴得水》双场；2026 嘉兴《压迫》《小王子》三场演出</li>
               </ul>
               </div>
             </div>

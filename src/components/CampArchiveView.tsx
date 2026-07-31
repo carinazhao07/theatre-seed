@@ -59,7 +59,7 @@ function pickPhotos(camp: Camp) {
     seen.add(src);
     unique.push(src);
   }
-  return unique.length > 0 ? unique : [cover];
+  return unique;
 }
 
 function Photo({
@@ -67,11 +67,13 @@ function Photo({
   className = "",
   priority = false,
   sizes = "(max-width:768px) 100vw, 50vw",
+  fit = "cover",
 }: {
   src: string;
   className?: string;
   priority?: boolean;
   sizes?: string;
+  fit?: "cover" | "contain";
 }) {
   return (
     <div className={`relative overflow-hidden bg-mist ${className}`}>
@@ -80,7 +82,7 @@ function Photo({
         alt=""
         fill
         priority={priority}
-        className="object-cover"
+        className={fit === "contain" ? "object-contain" : "object-cover"}
         sizes={sizes}
       />
     </div>
@@ -97,20 +99,29 @@ export function CampArchiveView({
   copy: CampArchiveCopy;
 }) {
   const photos = pickPhotos(camp);
-  const diptych = photos.slice(0, 2);
-  const breakPhoto = photos[2] ?? photos[0];
+  const showGalleryEmbeds = photos.length > 0 && camp.modules.length > 0;
+  const diptych = showGalleryEmbeds ? photos.slice(0, 2) : [];
+  const breakPhoto = showGalleryEmbeds ? (photos[2] ?? null) : null;
   const modulePhotos = photos.slice(3);
   const photoForModule = (i: number) =>
     modulePhotos[i % Math.max(modulePhotos.length, 1)] ??
-    photos[i % photos.length];
+    photos[i % Math.max(photos.length, 1)];
 
-  const used = new Set<string>([...diptych, breakPhoto]);
-  camp.modules.forEach((_, i) => used.add(photoForModule(i)));
-  const leftovers = photos.filter((src) => !used.has(src)).slice(0, 3);
+  const used = new Set<string>([
+    ...diptych,
+    ...(breakPhoto ? [breakPhoto] : []),
+  ]);
+  camp.modules.forEach((_, i) => {
+    if (photos.length > 0) used.add(photoForModule(i));
+  });
+  const leftovers =
+    showGalleryEmbeds
+      ? photos.filter((src) => !used.has(src)).slice(0, 3)
+      : [];
 
   return (
     <>
-      <section className="relative min-h-[70svh] overflow-hidden bg-cream-dark pt-28 text-white md:min-h-[78svh] md:pt-32">
+      <section className="relative min-h-[60svh] overflow-hidden bg-cream-dark pt-28 text-white md:min-h-[70svh] md:pt-32">
         <Image
           src={camp.cover}
           alt=""
@@ -226,6 +237,67 @@ export function CampArchiveView({
         </section>
       )}
 
+      {camp.productionsDetailed && camp.productionsDetailed.length > 0 && (
+        <section className="bg-mist/40 py-16 md:py-20">
+          <div className="mx-auto max-w-6xl px-5 md:px-8">
+            <Reveal>
+              <SectionHeading eyebrow="Productions" title={copy.productions} />
+            </Reveal>
+            <div className="mt-4 space-y-20 md:space-y-24">
+              {camp.productionsDetailed.map((p, i) => (
+                <Reveal key={p.title} delay={i * 0.06}>
+                  <article className="border-t border-mint pt-10">
+                    <div
+                      className={`grid items-start gap-8 md:gap-12 ${
+                        p.poster
+                          ? "md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]"
+                          : ""
+                      }`}
+                    >
+                      {p.poster && (
+                        <Photo
+                          src={p.poster}
+                          className="aspect-[3/4] w-full max-w-md bg-white"
+                          fit="contain"
+                          sizes="(max-width:768px) 100vw, 40vw"
+                          priority={i === 0}
+                        />
+                      )}
+                      <div>
+                        <h3 className="font-display text-3xl text-forest md:text-4xl">
+                          {p.title}
+                        </h3>
+                        {p.premise && (
+                          <p className="mt-3 text-xs tracking-wide text-mid-green">
+                            {copy.premise} {p.premise}
+                          </p>
+                        )}
+                        <p className="mt-5 whitespace-pre-line text-sm leading-relaxed text-ink-muted md:text-base md:leading-[1.85]">
+                          {p.body}
+                        </p>
+                      </div>
+                    </div>
+                    {p.photos && p.photos.length > 0 && (
+                      <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4">
+                        {p.photos.map((src, pi) => (
+                          <Photo
+                            key={src}
+                            src={src}
+                            className="aspect-[3/4] w-full"
+                            sizes="(max-width:768px) 50vw, 33vw"
+                            priority={i === 0 && pi < 2}
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {camp.schedule && camp.schedule.length > 0 && (
         <section className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-20">
           <Reveal>
@@ -242,84 +314,55 @@ export function CampArchiveView({
         </section>
       )}
 
-      {camp.productionsDetailed && camp.productionsDetailed.length > 0 && (
-        <section className="bg-mist/40 py-16 md:py-20">
-          <div className="mx-auto max-w-6xl px-5 md:px-8">
-            <Reveal>
-              <SectionHeading eyebrow="Productions" title={copy.productions} />
-            </Reveal>
-            <div
-              className={`grid gap-8 ${
-                camp.productionsDetailed.length > 1
-                  ? "md:grid-cols-2"
-                  : "max-w-3xl"
-              }`}
-            >
-              {camp.productionsDetailed.map((p, i) => (
-                <Reveal key={p.title} delay={i * 0.08}>
-                  <article className="h-full border-t border-mint pt-6">
-                    <h3 className="font-display text-2xl text-forest">
-                      {p.title}
-                    </h3>
-                    {p.premise && (
-                      <p className="mt-3 text-xs tracking-wide text-mid-green">
-                        {copy.premise} {p.premise}
-                      </p>
+      {camp.modules.length > 0 && (
+        <section className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-20">
+          <Reveal>
+            <SectionHeading eyebrow="Story" title={copy.story} />
+          </Reveal>
+          <div className="mt-4 space-y-16 md:space-y-20">
+            {camp.modules.map((m, i) => {
+              const img = photos.length > 0 ? photoForModule(i) : null;
+              const imageLeft = i % 2 === 0;
+              return (
+                <Reveal key={m.title} delay={0.04}>
+                  <article
+                    className={`grid items-center gap-8 md:gap-12 ${
+                      img ? "md:grid-cols-2" : ""
+                    } ${img && !imageLeft ? "md:[&>*:first-child]:order-2" : ""}`}
+                  >
+                    {img && (
+                      <Photo
+                        src={img}
+                        className="aspect-[4/3] w-full"
+                        sizes="(max-width:768px) 100vw, 50vw"
+                      />
                     )}
-                    <p className="mt-4 text-sm leading-relaxed text-ink-muted md:text-base">
-                      {p.body}
-                    </p>
+                    <div>
+                      <p className="text-xs tracking-[0.2em] text-mid-green uppercase">
+                        {String(i + 1).padStart(2, "0")}
+                      </p>
+                      <h3 className="mt-3 font-display text-2xl text-forest md:text-3xl">
+                        {m.title}
+                      </h3>
+                      <p className="mt-4 text-sm leading-relaxed text-ink-muted md:text-base md:leading-[1.8]">
+                        {m.body}
+                      </p>
+                    </div>
                   </article>
                 </Reveal>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </section>
       )}
-
-      <section className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-20">
-        <Reveal>
-          <SectionHeading eyebrow="Story" title={copy.story} />
-        </Reveal>
-        <div className="mt-4 space-y-16 md:space-y-20">
-          {camp.modules.map((m, i) => {
-            const img = photoForModule(i);
-            const imageLeft = i % 2 === 0;
-            return (
-              <Reveal key={m.title} delay={0.04}>
-                <article
-                  className={`grid items-center gap-8 md:grid-cols-2 md:gap-12 ${
-                    imageLeft ? "" : "md:[&>*:first-child]:order-2"
-                  }`}
-                >
-                  <Photo
-                    src={img}
-                    className="aspect-[4/3] w-full"
-                    sizes="(max-width:768px) 100vw, 50vw"
-                  />
-                  <div>
-                    <p className="text-xs tracking-[0.2em] text-mid-green uppercase">
-                      {String(i + 1).padStart(2, "0")}
-                    </p>
-                    <h3 className="mt-3 font-display text-2xl text-forest md:text-3xl">
-                      {m.title}
-                    </h3>
-                    <p className="mt-4 text-sm leading-relaxed text-ink-muted md:text-base md:leading-[1.8]">
-                      {m.body}
-                    </p>
-                  </div>
-                </article>
-              </Reveal>
-            );
-          })}
-        </div>
-      </section>
 
       {leftovers.length >= 2 && (
         <section className="mx-auto max-w-6xl px-5 pb-8 md:px-8">
           <div
             className={`grid gap-3 md:gap-4 ${
-              leftovers.length >= 3 ? "grid-cols-2 md:grid-cols-3" : "grid-cols-2"
+              leftovers.length >= 3
+                ? "grid-cols-2 md:grid-cols-3"
+                : "grid-cols-2"
             }`}
           >
             {leftovers.map((src, i) => (
@@ -361,12 +404,21 @@ export function CampArchiveView({
 
       <section className="mx-auto max-w-6xl px-5 py-16 md:px-8">
         <div className="flex flex-col items-start justify-between gap-6 border border-forest/10 bg-white/70 p-8 md:flex-row md:items-center">
-          <div>
-            <p className="font-display text-xl text-forest">{copy.wechatTitle}</p>
-            <p className="mt-2 text-sm text-ink-muted">
-              {camp.wechatUrl ? copy.wechatBody : copy.wechatLater}
-            </p>
-          </div>
+          {camp.wechatUrl ? (
+            <div>
+              <p className="font-display text-xl text-forest">
+                {copy.wechatTitle}
+              </p>
+              <p className="mt-2 text-sm text-ink-muted">{copy.wechatBody}</p>
+            </div>
+          ) : (
+            <div>
+              <p className="font-display text-xl text-forest">
+                {locale === "en" ? "More coming soon" : "更多内容即将更新"}
+              </p>
+              <p className="mt-2 text-sm text-ink-muted">{copy.wechatLater}</p>
+            </div>
+          )}
           <div className="flex flex-wrap gap-3">
             {camp.wechatUrl && (
               <a

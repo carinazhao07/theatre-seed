@@ -90,7 +90,7 @@ export const campsPageEn = {
     winter: {
       eyebrow: "Winter",
       title: "Theatre Seed Winter Camp",
-      duration: "3–5 days · short, intensive co-creation",
+      duration: "5–7 days · short, intensive co-creation",
       items: [
         "Held in county towns or villages (Guangnan Village, Qianyang Ancient Town…)—immersed in making",
         "Core model: co-creation + short plays, from inspiration to stage in days",
@@ -107,7 +107,7 @@ export const campsPageEn = {
         "Often uses dual venues—county + city (e.g. Guangnan + Changsha)",
         "Core model: full production of a classic play + multi-stop tour",
         "Online pre-study, auditions, read-alouds, workshops, costume photos, technical integration",
-        "Completed: 2025 The Donkey Gets Water, two performances; in progress: 2026 Jiaxing, eleven days, three shows",
+        "Completed: 2025 The Donkey Gets Water, two performances; 2026 Jiaxing — Oppression & The Little Prince, three shows",
       ],
       imgAlt: "Theatre Seed Summer Camp",
     },

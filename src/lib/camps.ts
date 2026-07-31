@@ -11,6 +11,8 @@ export type Production = {
   title: string;
   premise?: string;
   body: string;
+  poster?: string;
+  photos?: string[];
 };
 
 export type Camp = {
@@ -410,83 +412,46 @@ export const camps: Camp[] = [
     season: "夏令营",
     year: 2026,
     title: "种戏夏令营 2026",
-    subtitle: "嘉兴十一日：《压迫》与《小王子》，三场正式演出",
+    subtitle: "嘉兴十一日：《压迫》与《小王子》",
     dates: "2026.07.23 – 08.02",
     location: "浙江嘉兴",
     participants: "演员组 · 幕后组 · 导师团队",
     status: "completed",
-    cover: "/images/camps/2026-summer/oppression-01.jpg",
-    gallery: [
-      "/images/camps/2026-summer/oppression-01.jpg",
-      "/images/camps/2026-summer/poster-oppression.jpg",
-      "/images/camps/2026-summer/poster-petit-prince.jpg",
-      "/images/camps/2026-summer/prince-01.jpg",
-      "/images/camps/2026-summer/oppression-02.jpg",
-      "/images/camps/2026-summer/prince-02.jpg",
-      "/images/camps/2026-summer/oppression-03.jpg",
-      "/images/camps/2026-summer/prince-03.jpg",
-      "/images/camps/2026-summer/oppression-04.jpg",
-      "/images/camps/2026-summer/prince-04.jpg",
-      "/images/camps/2026-summer/oppression-05.jpg",
-      "/images/camps/2026-summer/prince-05.jpg",
-      "/images/camps/2026-summer/prince-06.jpg",
-    ],
-    mentors: "《压迫》导演冉与郭 · 《小王子》导演王嘉佳 · 工作坊导师团队",
-    venues: ["嘉兴演出（7.31）", "嘉年华演出（8.1）", "嘉兴剧场演出（8.2）"],
-    highlights: [
-      "双剧目并行：《压迫》与《小王子》",
-      "舞美 / 灯光工作坊 + 定妆照与外出宣传",
-      "完整联排与技术合成彩排",
-      "7.31 / 8.1 / 8.2 三场正式演出收束",
-    ],
+    cover: "/images/camps/2026-summer/poster-oppression.jpg",
+    gallery: [],
     summary:
-      "2026 年 7 月 23 日至 8 月 2 日，「种戏」夏令营在浙江嘉兴举办。十一天里，伙伴们同时打磨两部戏——经典独幕剧《压迫》与童话舞台《小王子》：从剧本分析、试镜选角，到舞美灯光、定妆宣传，再到技术合成与完整联排，最终以三场正式演出收束——嘉兴演出、嘉年华演出、嘉兴剧场演出。",
-    overview: [
-      "日节奏：早功 → 上午下午排练 / 工作坊 → 晚间排练或演出 → 每日复盘。",
-      "双剧组并行：演员在《压迫》与《小王子》之间进入各自角色，互相观看、互相接住。",
-      "演出周：7.31 嘉兴 · 8.1 嘉年华 · 8.2 嘉兴剧场，并以庆功宴与结项复盘画上句点。",
-    ],
+      "2026 年 7 月 23 日至 8 月 2 日，「种戏」夏令营在浙江嘉兴举办。营期排演《压迫》与《小王子》两部戏，并以 7.31 / 8.1 / 8.2 三场演出收束。完整回顾与更多现场影像将陆续更新。",
+    overview: [],
     productions: ["《压迫》", "《小王子》"],
     productionsDetailed: [
       {
         title: "《压迫》",
-        premise: "一间待租的屋子，几位忽然撞上的人",
-        body: "导演：冉与郭。演员：周翔（男客）· 赵紫涵（女客）· 饶婷（房东）· 谢琴（丫鬟）· 王若凝（巡警）。民国气息的独幕戏，在逼仄的空间里推开权力、身份与无处安放的压迫感——定妆照里的巡警帽檐、房东神色与客人们的对峙，把戏从纸上推到了可触的距离。",
+        body: "导演：冉与郭\n演员：周翔（男客）· 赵紫涵（女客）· 饶婷（房东）· 谢琴（丫鬟）· 王若凝（巡警）",
+        poster: "/images/camps/2026-summer/poster-oppression.jpg",
+        photos: [
+          "/images/camps/2026-summer/oppression-01.jpg",
+          "/images/camps/2026-summer/oppression-02.jpg",
+          "/images/camps/2026-summer/oppression-03.jpg",
+          "/images/camps/2026-summer/oppression-04.jpg",
+          "/images/camps/2026-summer/oppression-05.jpg",
+        ],
       },
       {
         title: "《小王子》",
-        premise: "飞行员、小王子，以及星球上那些大人",
-        body: "导演：王嘉佳。演员：陈湘（飞行员）· 饶妃玲（小王子）· 潘樾（狐狸 / 花）· 李浩错（国王 / 商人）· 卢子涵（虚荣的人 / 地理学家 / 蛇）· 袁露（机械师 / 醉酒的人 / 点灯的人）。把童话搬上舞台：星空、玫瑰与驯养，用孩子的目光重新问大人世界里那些「正经事」。",
+        body: "导演：王嘉佳\n演员：陈湘（飞行员）· 饶妃玲（小王子）· 潘樾（狐狸 / 花）· 李浩错（国王 / 商人）· 卢子涵（虚荣的人 / 地理学家 / 蛇）· 袁露（机械师 / 醉酒的人 / 点灯的人）",
+        poster: "/images/camps/2026-summer/poster-petit-prince.jpg",
+        photos: [
+          "/images/camps/2026-summer/prince-01.jpg",
+          "/images/camps/2026-summer/prince-02.jpg",
+          "/images/camps/2026-summer/prince-03.jpg",
+          "/images/camps/2026-summer/prince-04.jpg",
+          "/images/camps/2026-summer/prince-05.jpg",
+          "/images/camps/2026-summer/prince-06.jpg",
+        ],
       },
     ],
-    modules: [
-      {
-        title: "打开两部戏",
-        body: "抵达嘉兴的第二天就开始剧本分析、表演训练与试镜选角。两部戏并行，意味着要更快地认出自己的角色，也要学会把舞台交给另一组伙伴——排练厅里同时响起《压迫》的紧绷与《小王子》的轻声追问。",
-      },
-      {
-        title: "定妆照那一天",
-        body: "7 月 28 日下午留给定妆。妆造落笔后，巡警、房东、飞行员、玫瑰与小王子忽然站在镜头前：黄昏石桥上的《压迫》人像，圆形光斑里的《小王子》角色照——快门一响，角色不再只是台词表上的名字。当晚还有外出宣传，把戏递到更多人的眼前。",
-      },
-      {
-        title: "工作坊与合成",
-        body: "舞美设计与灯光工作坊穿插在排练之间；7.29–7.30 进入技术合成与完整联排。灯光、调度、换场与情绪线被一次次拧紧，直到两部戏都能在同一个夜晚被稳稳托起。",
-      },
-      {
-        title: "三场演出",
-        body: "7.31 嘉兴演出 · 8.1 嘉年华演出 · 8.2 嘉兴剧场演出。三场观众不同、场地不同，紧张与兴奋却一样真实。最后一晚，庆功宴与结项复盘把十一天的汗水、笑声和拥抱收进同一段记忆。",
-      },
-    ],
-    quotes: [
-      {
-        text: "故事永远说不完，种戏种下的种子在缓缓发芽，抽出枝桠，持续生长。",
-        author: "种戏团队",
-      },
-      {
-        text: "两部戏、三场演出——嘉兴的十一天，把排练厅里的每一次试错，都变成了台上可以互相接住的勇气。",
-        author: "2026 夏令营",
-      },
-    ],
+    modules: [],
+    quotes: [],
     schedule: [
       {
         date: "07.23",
