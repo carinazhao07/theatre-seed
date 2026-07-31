@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/SectionHeading";
 import { joinEn } from "@/lib/en/pages";
-import { siteEn } from "@/lib/en/site";
 
 export const metadata: Metadata = joinEn.metadata;
 
