@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: theatre-seed
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: out
+    pullRequestPreviewsEnabled: false
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
