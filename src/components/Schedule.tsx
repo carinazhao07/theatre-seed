@@ -21,55 +21,64 @@ export function Schedule({
   items: ScheduleItem[];
   locale?: Locale;
 }) {
+  const cols =
+    items.length <= 4
+      ? "sm:grid-cols-2 lg:grid-cols-4"
+      : items.length <= 8
+        ? "sm:grid-cols-2 lg:grid-cols-4"
+        : "sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4";
+
   return (
-    <div className="relative">
-      <div className="absolute top-0 bottom-0 left-[1.15rem] w-px bg-mint/50 md:left-1/2" />
-      <ul className="space-y-8">
-        {items.map((item, i) => {
-          const phase =
-            locale === "en"
-              ? {
-                  label: uiEn.phase[item.phase],
-                  className: phaseStyleZh[item.phase].className,
-                }
-              : phaseStyleZh[item.phase];
-          const left = i % 2 === 0;
-          return (
-            <li
-              key={item.date}
-              className={`relative grid gap-4 md:grid-cols-2 md:gap-10 ${
-                left ? "" : "md:[&>*:first-child]:order-2"
-              }`}
-            >
-              <div
-                className={`pl-12 md:pl-0 ${left ? "md:text-right md:pr-10" : "md:pl-10"}`}
-              >
-                <div
-                  className={`inline-flex items-center gap-3 ${left ? "md:flex-row-reverse" : ""}`}
-                >
-                  <span className={`px-2.5 py-1 text-xs tracking-wide ${phase.className}`}>
-                    {phase.label}
-                  </span>
-                  <span className="font-display text-2xl text-forest">{item.date}</span>
-                </div>
-                <h3 className="mt-2 font-display text-xl text-ink">{item.label}</h3>
-                <ul className="mt-2 space-y-1">
-                  {item.highlights.map((h) => (
-                    <li key={h} className="text-sm text-ink-muted">
-                      {h}
-                    </li>
-                  ))}
-                </ul>
+    <ol className={`grid grid-cols-1 gap-4 ${cols} md:gap-5`}>
+      {items.map((item, i) => {
+        const phase =
+          locale === "en"
+            ? {
+                label: uiEn.phase[item.phase],
+                className: phaseStyleZh[item.phase].className,
+              }
+            : phaseStyleZh[item.phase];
+
+        return (
+          <li
+            key={`${item.date}-${item.label}`}
+            className="flex h-full flex-col border border-forest/10 bg-white/70 p-5 transition hover:border-mint"
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p className="font-display text-xs tracking-[0.18em] text-mid-green uppercase">
+                  {locale === "en" ? `Day ${i + 1}` : `第 ${i + 1} 天`}
+                </p>
+                <p className="mt-1 font-display text-2xl leading-none text-forest">
+                  {item.date}
+                </p>
               </div>
-              <div
-                className="absolute top-2 left-3 h-4 w-4 rounded-full border-2 border-mint bg-paper md:left-1/2 md:-translate-x-1/2"
-                aria-hidden
-              />
-              <div className="hidden md:block" />
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+              <span
+                className={`shrink-0 px-2.5 py-1 text-[11px] tracking-wide ${phase.className}`}
+              >
+                {phase.label}
+              </span>
+            </div>
+            <h3 className="mt-4 font-display text-lg leading-snug text-ink md:text-xl">
+              {item.label}
+            </h3>
+            <ul className="mt-3 space-y-1.5 border-t border-forest/8 pt-3">
+              {item.highlights.map((h) => (
+                <li
+                  key={h}
+                  className="flex gap-2 text-sm leading-relaxed text-ink-muted"
+                >
+                  <span
+                    className="mt-2 h-1 w-1 shrink-0 rounded-full bg-mid-green"
+                    aria-hidden
+                  />
+                  {h}
+                </li>
+              ))}
+            </ul>
+          </li>
+        );
+      })}
+    </ol>
   );
 }
