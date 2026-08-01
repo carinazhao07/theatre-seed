@@ -345,21 +345,12 @@ export default function ZhongxiHome({ locale = "zh" }: { locale?: Locale }) {
           50%  { opacity: 1; }
           100% { opacity: 0.4; }
         }
-        @keyframes scrollBounce {
-          0%, 100% { transform: translateY(0); opacity: 1; }
-          50%       { transform: translateY(10px); opacity: 0.75; }
-        }
-        @keyframes scrollDot {
-          0%   { transform: translateY(0); opacity: 1; }
-          70%  { transform: translateY(10px); opacity: 0; }
-          100% { transform: translateY(0); opacity: 0; }
-        }
         @keyframes heroKenburns {
           0%   { transform: scale(1.04); }
           100% { transform: scale(1.12); }
         }
         @media (prefers-reduced-motion: reduce) {
-          .hero-kenburns, .scroll-cue-bounce, .scroll-cue-dot {
+          .hero-kenburns {
             animation: none !important;
           }
         }
@@ -676,49 +667,6 @@ export default function ZhongxiHome({ locale = "zh" }: { locale?: Locale }) {
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div
-          aria-hidden
-          className="scroll-cue-bounce"
-          style={{
-            position: 'absolute', bottom: 28, left: '50%',
-            transform: 'translateX(-50%)',
-            display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10,
-            zIndex: 4,
-            opacity: heroReady ? 1 : 0,
-            transition: 'opacity 1s 1.5s',
-            animation: heroReady ? 'scrollBounce 2.2s ease-in-out infinite' : undefined,
-          }}
-        >
-          <div style={{
-            width: 22, height: 34,
-            border: `1.5px solid rgba(168,212,168,0.85)`,
-            borderRadius: 12,
-            position: 'relative',
-            boxShadow: '0 0 18px rgba(90,138,92,0.35)',
-            background: 'rgba(12,26,14,0.25)',
-          }}>
-            <span
-              className="scroll-cue-dot"
-              style={{
-                position: 'absolute', left: '50%', top: 7,
-                width: 3, height: 6, marginLeft: -1.5,
-                borderRadius: 2,
-                background: C.accentLight,
-                animation: 'scrollDot 1.8s ease-in-out infinite',
-              }}
-            />
-          </div>
-          <span style={{
-            fontSize: 12,
-            letterSpacing: locale === 'en' ? '0.22em' : '0.28em',
-            fontWeight: 500,
-            color: 'rgba(200,230,200,0.92)',
-            textShadow: '0 1px 10px rgba(12,26,14,0.55)',
-          }}>
-            {t.hero.scrollCue}
-          </span>
-        </div>
       </section>
 
       {/* ── ABOUT ── */}
