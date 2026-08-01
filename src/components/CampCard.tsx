@@ -81,7 +81,7 @@ export function CampCard({
   return (
     <Link
       href={withLocale(locale, `/camps/${camp.slug}`)}
-      className="group relative block overflow-hidden bg-mist/40"
+      className="group relative block overflow-hidden bg-mist/40 transition duration-500 hover:-translate-y-1.5 hover:shadow-[0_18px_40px_rgba(12,26,14,0.12)]"
       style={{ animationDelay: `${index * 80}ms` }}
     >
       {inner}

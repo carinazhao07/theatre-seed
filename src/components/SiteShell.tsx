@@ -27,7 +27,9 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       <LangSetter locale={locale} />
       <Atmosphere />
       <Header />
-      <main className="flex-1">{children}</main>
+      <main key={pathname} className="page-enter flex-1">
+        {children}
+      </main>
       <Footer />
     </>
   );

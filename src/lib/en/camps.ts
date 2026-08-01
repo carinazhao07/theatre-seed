@@ -414,7 +414,7 @@ export const campsEn: Camp[] = [
       },
       {
         title: "The Little Prince",
-        director: "Wang Jiajia",
+        director: "Wang Xijia",
         body: "",
         poster: "/images/camps/2026-summer/poster-petit-prince.jpg",
         photos: [

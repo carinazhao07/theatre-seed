@@ -1,3 +1,6 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
 import type { ScheduleItem } from "@/lib/camps";
 import type { Locale } from "@/lib/locale";
 import { uiEn } from "@/lib/en/site";
@@ -21,6 +24,7 @@ export function Schedule({
   items: ScheduleItem[];
   locale?: Locale;
 }) {
+  const reduce = useReducedMotion();
   const cols =
     items.length <= 4
       ? "sm:grid-cols-2 lg:grid-cols-4"
@@ -40,8 +44,17 @@ export function Schedule({
             : phaseStyleZh[item.phase];
 
         return (
-          <li
+          <motion.li
             key={`${item.date}-${item.label}`}
+            initial={reduce ? false : { opacity: 0, y: 22 }}
+            whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-8% 0px" }}
+            transition={{
+              duration: 0.55,
+              delay: reduce ? 0 : i * 0.05,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            whileHover={reduce ? undefined : { y: -3 }}
             className="flex h-full flex-col border border-forest/10 bg-white/70 p-5 transition hover:border-mint"
           >
             <div className="flex items-start justify-between gap-3">
@@ -76,7 +89,7 @@ export function Schedule({
                 </li>
               ))}
             </ul>
-          </li>
+          </motion.li>
         );
       })}
     </ol>

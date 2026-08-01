@@ -15,6 +15,7 @@ export const homeZh = {
     body: "为零基础县域青年提供免费的戏剧教育与舞台实践，在共创与持续中练习表达，在观众面前被真正看见。",
     ctaAbout: "了解种戏",
     ctaCamps: "查看营期归档 →",
+    scrollCue: "向下滑",
   },
   about: {
     eyebrow: "ABOUT THEATRE SEED",

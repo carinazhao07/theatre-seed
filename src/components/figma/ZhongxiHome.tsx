@@ -101,8 +101,9 @@ function Reveal({ children, delay = 0, style = {} }: {
   return (
     <div ref={ref} style={{
       opacity: visible ? 1 : 0,
-      transform: visible ? 'translateY(0)' : 'translateY(32px)',
-      transition: `opacity 0.8s ${delay}ms ease, transform 0.8s ${delay}ms ease`,
+      transform: visible ? 'translateY(0) scale(1)' : 'translateY(36px) scale(0.985)',
+      filter: visible ? 'blur(0)' : 'blur(4px)',
+      transition: `opacity 0.85s ${delay}ms cubic-bezier(0.22,1,0.36,1), transform 0.85s ${delay}ms cubic-bezier(0.22,1,0.36,1), filter 0.85s ${delay}ms ease`,
       ...style,
     }}>
       {children}
@@ -345,8 +346,22 @@ export default function ZhongxiHome({ locale = "zh" }: { locale?: Locale }) {
           100% { opacity: 0.4; }
         }
         @keyframes scrollBounce {
-          0%, 100% { transform: translateY(0); }
-          50%       { transform: translateY(6px); }
+          0%, 100% { transform: translateY(0); opacity: 1; }
+          50%       { transform: translateY(10px); opacity: 0.75; }
+        }
+        @keyframes scrollDot {
+          0%   { transform: translateY(0); opacity: 1; }
+          70%  { transform: translateY(10px); opacity: 0; }
+          100% { transform: translateY(0); opacity: 0; }
+        }
+        @keyframes heroKenburns {
+          0%   { transform: scale(1.04); }
+          100% { transform: scale(1.12); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .hero-kenburns, .scroll-cue-bounce, .scroll-cue-dot {
+            animation: none !important;
+          }
         }
         .camp-card { transition: box-shadow 0.4s; }
         .camp-card:hover { box-shadow: 0 0 0 2px rgba(90,138,92,0.5), 0 24px 48px rgba(12,26,14,0.35) !important; }
@@ -471,7 +486,8 @@ export default function ZhongxiHome({ locale = "zh" }: { locale?: Locale }) {
           fill
           priority
           sizes="100vw"
-          style={{ objectFit: 'cover', opacity: 0.38, zIndex: 0 }}
+          className="hero-kenburns"
+          style={{ objectFit: 'cover', opacity: 0.38, zIndex: 0, animation: 'heroKenburns 28s ease-in-out infinite alternate' }}
         />
         <div style={{
           position: 'absolute', inset: 0, zIndex: 1,
@@ -661,16 +677,47 @@ export default function ZhongxiHome({ locale = "zh" }: { locale?: Locale }) {
         </div>
 
         {/* Scroll indicator */}
-        <div style={{
-          position: 'absolute', bottom: 36, left: '50%',
-          transform: 'translateX(-50%)',
-          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
-          zIndex: 4,
-          opacity: heroReady ? 1 : 0,
-          transition: 'opacity 1s 1.5s',
-        }}>
-          <div style={{ width: 1, height: 40, background: `linear-gradient(to bottom, ${C.accent}, transparent)`, animation: 'scrollBounce 2s ease-in-out infinite' }} />
-          <span style={{ fontSize: 9, letterSpacing: '0.25em', color: 'rgba(139,184,140,0.4)' }}>SCROLL</span>
+        <div
+          aria-hidden
+          className="scroll-cue-bounce"
+          style={{
+            position: 'absolute', bottom: 28, left: '50%',
+            transform: 'translateX(-50%)',
+            display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10,
+            zIndex: 4,
+            opacity: heroReady ? 1 : 0,
+            transition: 'opacity 1s 1.5s',
+            animation: heroReady ? 'scrollBounce 2.2s ease-in-out infinite' : undefined,
+          }}
+        >
+          <div style={{
+            width: 22, height: 34,
+            border: `1.5px solid rgba(168,212,168,0.85)`,
+            borderRadius: 12,
+            position: 'relative',
+            boxShadow: '0 0 18px rgba(90,138,92,0.35)',
+            background: 'rgba(12,26,14,0.25)',
+          }}>
+            <span
+              className="scroll-cue-dot"
+              style={{
+                position: 'absolute', left: '50%', top: 7,
+                width: 3, height: 6, marginLeft: -1.5,
+                borderRadius: 2,
+                background: C.accentLight,
+                animation: 'scrollDot 1.8s ease-in-out infinite',
+              }}
+            />
+          </div>
+          <span style={{
+            fontSize: 12,
+            letterSpacing: locale === 'en' ? '0.22em' : '0.28em',
+            fontWeight: 500,
+            color: 'rgba(200,230,200,0.92)',
+            textShadow: '0 1px 10px rgba(12,26,14,0.55)',
+          }}>
+            {t.hero.scrollCue}
+          </span>
         </div>
       </section>
 

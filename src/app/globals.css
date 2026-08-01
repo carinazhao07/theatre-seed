@@ -265,12 +265,28 @@ body {
   animation: ripple 4.5s ease-out infinite;
 }
 
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-enter {
+  animation: page-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .atmosphere-orb--a,
   .atmosphere-orb--b,
   .atmosphere-orb--c,
   .kenburns,
-  .seed-ripple {
+  .seed-ripple,
+  .page-enter {
     animation: none !important;
   }
 }

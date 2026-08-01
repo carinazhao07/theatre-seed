@@ -460,7 +460,7 @@ export const camps: Camp[] = [
       },
       {
         title: "《小王子》",
-        director: "王嘉佳",
+        director: "王翕佳",
         body: "",
         poster: "/images/camps/2026-summer/poster-petit-prince.jpg",
         photos: [

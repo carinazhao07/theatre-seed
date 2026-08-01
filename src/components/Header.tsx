@@ -68,7 +68,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative text-sm tracking-wide transition ${
+                className={`group relative text-sm tracking-wide transition duration-300 ${
                   solid
                     ? active
                       ? "text-forest"
@@ -79,13 +79,11 @@ export function Header() {
                 }`}
               >
                 {item.label}
-                {active && (
-                  <span
-                    className={`absolute -bottom-1 left-0 h-px w-full ${
-                      solid ? "bg-mid-green" : "bg-mint"
-                    }`}
-                  />
-                )}
+                <span
+                  className={`absolute -bottom-1 left-0 h-px w-full origin-left transition-transform duration-300 ${
+                    solid ? "bg-mid-green" : "bg-mint"
+                  } ${active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
+                />
               </Link>
             );
           })}

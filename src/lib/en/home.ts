@@ -14,6 +14,7 @@ export const homeEn = {
     body: "Free theatre education and stage practice for county youth with no prior experience—learning to express through co-creation, and to be truly seen by an audience.",
     ctaAbout: "About Theatre Seed",
     ctaCamps: "Browse camp archive →",
+    scrollCue: "Scroll",
   },
   about: {
     eyebrow: "ABOUT THEATRE SEED",

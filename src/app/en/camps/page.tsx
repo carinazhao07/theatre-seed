@@ -14,7 +14,7 @@ export default function CampsPageEn() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-cream-dark pt-28 pb-16 text-white md:pt-36 md:pb-20">
+      <section className="relative overflow-hidden bg-cream-dark pt-24 pb-12 text-white md:pt-36 md:pb-20">
         <div className="absolute inset-0">
           <Image
             src="/images/gallery-32.jpg"
@@ -26,10 +26,10 @@ export default function CampsPageEn() {
           />
           <div className="absolute inset-0 bg-cream-dark/70" />
         </div>
-        <div className="relative mx-auto max-w-6xl px-5 md:px-8">
+        <div className="relative mx-auto max-w-6xl px-4 safe-x md:px-8">
           <Reveal>
             <p className="text-xs tracking-[0.25em] text-mint uppercase">{hero.eyebrow}</p>
-            <h1 className="mt-4 font-display text-4xl md:text-6xl">{hero.title}</h1>
+            <h1 className="mt-4 font-display text-[2rem] leading-tight md:text-6xl">{hero.title}</h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
               {hero.body}
             </p>
@@ -37,7 +37,7 @@ export default function CampsPageEn() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+      <section className="mx-auto max-w-6xl px-4 py-12 safe-x md:px-8 md:py-24">
         <Reveal>
           <SectionHeading
             eyebrow="Two Modes"
@@ -101,7 +101,7 @@ export default function CampsPageEn() {
       </section>
 
       <section className="bg-mist/40 py-16 md:py-24">
-        <div className="mx-auto max-w-6xl px-5 md:px-8">
+        <div className="mx-auto max-w-6xl px-4 safe-x md:px-8">
           <Reveal>
             <SectionHeading eyebrow="Process" title="Shared project flow" />
           </Reveal>
@@ -136,7 +136,7 @@ export default function CampsPageEn() {
 
       <SeedDivider className="pt-10" />
 
-      <section className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+      <section className="mx-auto max-w-6xl px-4 py-12 safe-x md:px-8 md:py-24">
         <Reveal>
           <SectionHeading
             eyebrow={archive.eyebrow}
