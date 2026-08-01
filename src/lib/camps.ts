@@ -60,24 +60,19 @@ export const camps: Camp[] = [
     location: "广西龙胜 · 广南村",
     participants: "12 位学员 + 导师团队",
     status: "completed",
-    cover: "/images/gallery-20.jpg",
+    cover: "/images/camps/2025-winter/scene-04.jpg",
     gallery: [
-      "/images/gallery-20.jpg",
-      "/images/gallery-21.jpg",
-      "/images/gallery-25.jpg",
-      "/images/gallery-06.jpg",
-      "/images/gallery-43.jpg",
-      "/images/gallery-29.jpg",
-      "/images/gallery-05.jpg",
+      "/images/camps/2025-winter/scene-04.jpg",
+      "/images/camps/2025-winter/scene-06.jpg",
+      "/images/camps/2025-winter/scene-01.jpg",
+      "/images/camps/2025-winter/training.jpg",
+      "/images/camps/2025-winter/scene-03.jpg",
+      "/images/camps/2025-winter/scene-08.jpg",
+      "/images/camps/2025-winter/scene-09.jpg",
+      "/images/camps/2025-winter/scene-05.jpg",
+      "/images/camps/2025-winter/scene-02.jpg",
     ],
     mentors: "导师秋秋（上戏）· 发起人宁淇 · 舞监呱呱等",
-    venues: ["广南侗寨保护中心（村民公演）"],
-    highlights: [
-      "种戏首届营期，零基础共创",
-      "剪影剧情 +「神树」布景",
-      "走村入户邀请村民观演",
-      "学唱 Beyond《Amani》",
-    ],
     summary:
       "2025 年 1 月 16 日至 19 日，「种戏」冬令营首次落地广西龙胜县广南村。十二位来自各地的伙伴，与毕业于上海戏剧学院、有丰富话剧表演导演经验的导师秋秋相聚于此，用三天时间完成一场从零到舞台的戏剧探索。他们中多数人从未接触过戏剧，却在密集的表演训练、即兴创作与团队协作中，最终呈现出一场充满生命力的原创演出，让寂静的山野第一次回荡起属于自己的戏剧之声。",
     overview: [
@@ -87,12 +82,6 @@ export const camps: Camp[] = [
       "Day 4：剧本与剪影剧情技术合成、彩排冲刺、正式演出与庆功复盘。",
     ],
     productions: ["学员共创原创短剧（含剪影剧情）"],
-    productionsDetailed: [
-      {
-        title: "共创汇报演出",
-        body: "营员以个人经历为灵感，共同构思剧本与剧情，结合剪影艺术与纸箱、「神树」等布景，亲手裁剪服装、设计海报，并走进村子邀请村民。从技术合成到彩排，每个环节由营员完成，真正体验戏剧创作全过程。",
-      },
-    ],
     modules: [
       {
         title: "表演训练",
@@ -187,23 +176,21 @@ export const camps: Camp[] = [
     cover: "/images/camps/2025-summer/poster-donkey.jpg",
     gallery: [
       "/images/camps/2025-summer/poster-donkey.jpg",
+      "/images/camps/2025-summer/costume-01-principal.jpg",
+      "/images/camps/2025-summer/costume-02-tienan.jpg",
+      "/images/camps/2025-summer/costume-03-jiajia.jpg",
+      "/images/camps/2025-summer/costume-04-kuishan.jpg",
+      "/images/camps/2025-summer/costume-05-yiman.jpg",
+      "/images/camps/2025-summer/costume-06-commissioner.jpg",
+      "/images/camps/2025-summer/costume-07-wife.jpg",
+      "/images/camps/2025-summer/costume-08-blacksmith.jpg",
+      "/images/camps/2025-summer/costume-09-ross.jpg",
       "/images/gallery-24.jpg",
       "/images/gallery-33.jpg",
-      "/images/gallery-46.jpg",
       "/images/gallery-34.jpg",
       "/images/gallery-35.jpg",
-      "/images/gallery-11.jpg",
-      "/images/gallery-12.jpg",
     ],
     mentors: "导演赵宁淇 · 嘉辰 / 嘎嘎 / April 等工作坊导师",
-    venues: ["广南保护中心教室（7.10）", "长沙大汉研学酒店（7.13）"],
-    highlights: [
-      "营前 4–6 周线上共学与试镜",
-      "经典话剧《驴得水》完整排演",
-      "广南村 + 长沙双场巡演",
-      "木偶 / 布景 / 音效灯光工作坊",
-      "侗寨田野、溪畔围读与赶集",
-    ],
     summary:
       "2025 年 7 月 3 日至 14 日，第一届「种戏」夏令营在广西龙胜县广南村顺利举办。十七位来自各地的伙伴用十天时间投入排练、共创与探索。在导演赵宁淇与导师们的带领下，完成了《驴得水》的排演与打磨，并带着这部戏走上巡演：7 月 10 日广南保护中心教室演给村民，7 月 13 日在长沙大汉研学酒店呈现给更多观众。一月在广南埋下的种子，于七月悄然发芽。",
     overview: [
@@ -212,25 +199,6 @@ export const camps: Camp[] = [
       "模块三 · 在地探索：手拉手走进黄昏稻田，溪边嬉戏，学唱侗歌《欢迎你到侗寨来》，感受山村节奏。",
     ],
     productions: ["《驴得水》"],
-    productionsDetailed: [
-      {
-        title: "《驴得水》",
-        director: "赵宁淇",
-        body: "黑色幽默经典话剧。7 月 10 日 20:00 广南保护中心教室 · 7 月 13 日 18:30 长沙大汉研学酒店。",
-        poster: "/images/camps/2025-summer/poster-donkey.jpg",
-        photos: [
-          "/images/camps/2025-summer/costume-01-principal.jpg",
-          "/images/camps/2025-summer/costume-02-tienan.jpg",
-          "/images/camps/2025-summer/costume-03-jiajia.jpg",
-          "/images/camps/2025-summer/costume-04-kuishan.jpg",
-          "/images/camps/2025-summer/costume-05-yiman.jpg",
-          "/images/camps/2025-summer/costume-06-commissioner.jpg",
-          "/images/camps/2025-summer/costume-07-wife.jpg",
-          "/images/camps/2025-summer/costume-08-blacksmith.jpg",
-          "/images/camps/2025-summer/costume-09-ross.jpg",
-        ],
-      },
-    ],
     modules: [
       {
         title: "排戏记",
@@ -319,19 +287,8 @@ export const camps: Camp[] = [
       "/images/camps/2026-winter/curtain-call.jpg",
       "/images/camps/2026-winter/stage-bow.jpg",
       "/images/camps/2026-winter/group-flash.jpg",
-      "/images/gallery-37.jpg",
-      "/images/gallery-38.jpg",
-      "/images/gallery-40.jpg",
-      "/images/gallery-41.jpg",
     ],
     mentors: "宁淇 · 呱呱 等",
-    venues: ["黔阳古城茶馆", "中方一中 / 冬旅人营点"],
-    highlights: [
-      "种戏冬令营首次落地黔阳古城",
-      "从零共创两部原创短剧",
-      "学员参与灯光与音效设计",
-      "茶馆雨中首演 + 高中生场巡演",
-    ],
     summary:
       "2026 年 2 月 4 日至 8 日，「种戏」冬令营首次落地湖南省怀化市黔阳古城。十五位伙伴用五天完成从零到舞台的探索：共同书写剧本、完成灯光及音效设计，创作《爱要大声说出口》与《延迟修复》，并在古城茶馆与中方一中 / 冬旅人营点完成巡演。从零到一的舞台经验里，藏着即兴创作的好奇心与团队协作的包容力——尝试戏剧，也许并不像预设的那么艰难。",
     overview: [
@@ -342,18 +299,6 @@ export const camps: Camp[] = [
       "Day 5：中方一中演出与庆功复盘。",
     ],
     productions: ["《爱要大声说出口》", "《延迟修复》"],
-    productionsDetailed: [
-      {
-        title: "《爱要大声说出口》",
-        premise: "一个人在火车上遇到了曾经喜欢的人",
-        body: "沉默的少年因怯懦错过爱情，别扭的父亲用伤人的话语包裹笨拙的爱。即兴碎片拼成载满遗憾与和解的列车。雨中茶馆首演平静无慌；面对高中生的笑声与共情，再次读懂种戏——从来不是完美表演，而是让每一份表达都被看见。",
-      },
-      {
-        title: "《延迟修复》",
-        premise: "一个人在医院遇见了已经过世的母亲",
-        body: "忙碌的孩子在母亲去世后翻看生前照片，看见母亲角色之外的生活。三幕跨越青年到老年：追梦者、不被看好的女儿、隐忍的妻子、坚强的姐姐、不想添麻烦的母亲。延迟修复的是对女性身份的认识与亲情的捕捉——让爱不用延迟，即刻修复。",
-      },
-    ],
     modules: [
       {
         title: "剧本共创",
@@ -439,40 +384,25 @@ export const camps: Camp[] = [
     participants: "演员组 · 幕后组 · 导师团队",
     status: "completed",
     cover: "/images/camps/2026-summer/poster-oppression.jpg",
-    gallery: [],
+    gallery: [
+      "/images/camps/2026-summer/poster-oppression.jpg",
+      "/images/camps/2026-summer/poster-petit-prince.jpg",
+      "/images/camps/2026-summer/oppression-01.jpg",
+      "/images/camps/2026-summer/oppression-02.jpg",
+      "/images/camps/2026-summer/oppression-03.jpg",
+      "/images/camps/2026-summer/oppression-04.jpg",
+      "/images/camps/2026-summer/oppression-05.jpg",
+      "/images/camps/2026-summer/prince-01.jpg",
+      "/images/camps/2026-summer/prince-02.jpg",
+      "/images/camps/2026-summer/prince-03.jpg",
+      "/images/camps/2026-summer/prince-04.jpg",
+      "/images/camps/2026-summer/prince-05.jpg",
+      "/images/camps/2026-summer/prince-06.jpg",
+    ],
     summary:
       "2026 年 7 月 23 日至 8 月 2 日，「种戏」夏令营在浙江嘉兴 & 上海举办。营期排演《压迫》与《小王子》两部戏，并以 7.31 / 8.1 / 8.2 三场演出收束。完整回顾与更多现场影像将陆续更新。",
     overview: [],
     productions: ["《压迫》", "《小王子》"],
-    productionsDetailed: [
-      {
-        title: "《压迫》",
-        director: "冉与郭",
-        body: "",
-        poster: "/images/camps/2026-summer/poster-oppression.jpg",
-        photos: [
-          "/images/camps/2026-summer/oppression-01.jpg",
-          "/images/camps/2026-summer/oppression-02.jpg",
-          "/images/camps/2026-summer/oppression-03.jpg",
-          "/images/camps/2026-summer/oppression-04.jpg",
-          "/images/camps/2026-summer/oppression-05.jpg",
-        ],
-      },
-      {
-        title: "《小王子》",
-        director: "王翕佳",
-        body: "",
-        poster: "/images/camps/2026-summer/poster-petit-prince.jpg",
-        photos: [
-          "/images/camps/2026-summer/prince-01.jpg",
-          "/images/camps/2026-summer/prince-02.jpg",
-          "/images/camps/2026-summer/prince-03.jpg",
-          "/images/camps/2026-summer/prince-04.jpg",
-          "/images/camps/2026-summer/prince-05.jpg",
-          "/images/camps/2026-summer/prince-06.jpg",
-        ],
-      },
-    ],
     modules: [],
     quotes: [],
     schedule: [

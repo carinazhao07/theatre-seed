@@ -11,24 +11,19 @@ export const campsEn: Camp[] = [
     location: "Guangnan Village, Longsheng, Guangxi",
     participants: "12 participants + mentor team",
     status: "completed",
-    cover: "/images/gallery-20.jpg",
+    cover: "/images/camps/2025-winter/scene-04.jpg",
     gallery: [
-      "/images/gallery-20.jpg",
-      "/images/gallery-21.jpg",
-      "/images/gallery-25.jpg",
-      "/images/gallery-06.jpg",
-      "/images/gallery-43.jpg",
-      "/images/gallery-29.jpg",
-      "/images/gallery-05.jpg",
+      "/images/camps/2025-winter/scene-04.jpg",
+      "/images/camps/2025-winter/scene-06.jpg",
+      "/images/camps/2025-winter/scene-01.jpg",
+      "/images/camps/2025-winter/training.jpg",
+      "/images/camps/2025-winter/scene-03.jpg",
+      "/images/camps/2025-winter/scene-08.jpg",
+      "/images/camps/2025-winter/scene-09.jpg",
+      "/images/camps/2025-winter/scene-05.jpg",
+      "/images/camps/2025-winter/scene-02.jpg",
     ],
     mentors: "Mentor Qiuqiu (Shanghai Theatre Academy) · Founder Ningqi (Carina) Zhao · Stage manager Guagua, and others",
-    venues: ["Guangnan Dong Village Heritage Center (community performance)"],
-    highlights: [
-      "Theatre Seed's inaugural camp — co-created from scratch",
-      "Silhouette storytelling + the \"Sacred Tree\" set",
-      "Door-to-door invitations for village audiences",
-      "Learning to sing Beyond's \"Amani\"",
-    ],
     summary:
       "From January 16 to 19, 2025, Theatre Seed's first Winter Camp took root in Guangnan Village, Longsheng County, Guangxi. Twelve partners from across the country joined mentor Qiuqiu—a graduate of the Shanghai Theatre Academy with extensive experience in acting and directing—to explore theatre from the ground up in just three days. Most had never touched drama before, yet through intensive performance training, improvisation, and teamwork, they brought an original show full of life to the stage. For the first time, the quiet mountains echoed with a voice that was entirely their own.",
     overview: [
@@ -38,12 +33,6 @@ export const campsEn: Camp[] = [
       "Day 4: Technical integration of script and silhouette work, final rehearsals, the formal performance, and a celebratory debrief.",
     ],
     productions: ["Participant co-created original short play (with silhouette storytelling)"],
-    productionsDetailed: [
-      {
-        title: "Co-created showcase performance",
-        body: "Drawing on personal experiences, participants co-wrote the script and storyline, combining silhouette art with cardboard sets and the \"Sacred Tree.\" They cut costumes by hand, designed posters, and walked into the village to invite neighbors. From technical integration to final rehearsal, every step was theirs— a full journey through the process of making theatre.",
-      },
-    ],
     modules: [
       {
         title: "Performance training",
@@ -138,26 +127,21 @@ export const campsEn: Camp[] = [
     cover: "/images/camps/2025-summer/poster-donkey.jpg",
     gallery: [
       "/images/camps/2025-summer/poster-donkey.jpg",
+      "/images/camps/2025-summer/costume-01-principal.jpg",
+      "/images/camps/2025-summer/costume-02-tienan.jpg",
+      "/images/camps/2025-summer/costume-03-jiajia.jpg",
+      "/images/camps/2025-summer/costume-04-kuishan.jpg",
+      "/images/camps/2025-summer/costume-05-yiman.jpg",
+      "/images/camps/2025-summer/costume-06-commissioner.jpg",
+      "/images/camps/2025-summer/costume-07-wife.jpg",
+      "/images/camps/2025-summer/costume-08-blacksmith.jpg",
+      "/images/camps/2025-summer/costume-09-ross.jpg",
       "/images/gallery-24.jpg",
       "/images/gallery-33.jpg",
-      "/images/gallery-46.jpg",
       "/images/gallery-34.jpg",
       "/images/gallery-35.jpg",
-      "/images/gallery-11.jpg",
-      "/images/gallery-12.jpg",
     ],
     mentors: "Director Ningqi (Carina) Zhao · Workshop mentors including Jiachen, Gaga, and April",
-    venues: [
-      "Guangnan Conservation Center classroom (Jul 10)",
-      "Changsha Dahan Study Hotel (Jul 13)",
-    ],
-    highlights: [
-      "4–6 weeks of online pre-study and auditions",
-      "Full production of The Donkey Gets Water (《驴得水》)",
-      "Two-city tour: Guangnan Village + Changsha",
-      "Puppet / set / sound & lighting workshops",
-      "Dong village fields, streamside script readings, and market days",
-    ],
     summary:
       "From July 3 to 14, 2025, Theatre Seed's first Summer Camp took place in Guangnan Village, Longsheng County, Guangxi. Seventeen partners from across the country spent ten days in rehearsal, co-creation, and exploration. Under director Ningqi (Carina) Zhao and the mentors, they staged and refined The Donkey Gets Water (《驴得水》), then toured it in two cities—Jul 10 at the Guangnan Conservation Center classroom for villagers, and Jul 13 at Changsha Dahan Study Hotel for a wider audience. The seed planted in Guangnan in January quietly sprouted that July.",
     overview: [
@@ -166,25 +150,6 @@ export const campsEn: Camp[] = [
       "Module 3 · Place-based exploration: Hand in hand through rice fields at dusk, playing by the stream, learning the Dong song \"Welcome to Our Village\"—feeling the rhythm of mountain life.",
     ],
     productions: ["The Donkey Gets Water (《驴得水》)"],
-    productionsDetailed: [
-      {
-        title: "《驴得水》 / The Donkey Gets Water",
-        director: "Ningqi (Carina) Zhao",
-        body: "A classic dark comedy. Jul 10, 20:00 Guangnan Conservation Center classroom · Jul 13, 18:30 Changsha Dahan Study Hotel.",
-        poster: "/images/camps/2025-summer/poster-donkey.jpg",
-        photos: [
-          "/images/camps/2025-summer/costume-01-principal.jpg",
-          "/images/camps/2025-summer/costume-02-tienan.jpg",
-          "/images/camps/2025-summer/costume-03-jiajia.jpg",
-          "/images/camps/2025-summer/costume-04-kuishan.jpg",
-          "/images/camps/2025-summer/costume-05-yiman.jpg",
-          "/images/camps/2025-summer/costume-06-commissioner.jpg",
-          "/images/camps/2025-summer/costume-07-wife.jpg",
-          "/images/camps/2025-summer/costume-08-blacksmith.jpg",
-          "/images/camps/2025-summer/costume-09-ross.jpg",
-        ],
-      },
-    ],
     modules: [
       {
         title: "Rehearsal notes",
@@ -273,19 +238,8 @@ export const campsEn: Camp[] = [
       "/images/camps/2026-winter/curtain-call.jpg",
       "/images/camps/2026-winter/stage-bow.jpg",
       "/images/camps/2026-winter/group-flash.jpg",
-      "/images/gallery-37.jpg",
-      "/images/gallery-38.jpg",
-      "/images/gallery-40.jpg",
-      "/images/gallery-41.jpg",
     ],
     mentors: "Ningqi (Carina) Zhao · Guagua, and others",
-    venues: ["Qianyang Ancient Town teahouse", "Zhongfang No. 1 Middle School / Winter Traveller site"],
-    highlights: [
-      "Theatre Seed Winter Camp's first visit to Qianyang Ancient Town",
-      "Two original short plays co-created from scratch",
-      "Participants involved in lighting and sound design",
-      "Rainy teahouse premiere + high school tour",
-    ],
     summary:
       "From February 4 to 8, 2026, Theatre Seed's Winter Camp came to Qianyang Ancient Town in Huaihua, Hunan for the first time. Fifteen partners completed a five-day journey from zero to stage: co-writing scripts, designing lighting and sound, creating Say It Out Loud (《爱要大声说出口》) and Delayed Repair (《延迟修复》), and touring them at a teahouse in the ancient town and at Zhongfang No. 1 Middle School / the Winter Traveller site. In the experience of building something from nothing lay curiosity for improvisation and the generosity of teamwork—trying theatre may not be as hard as we imagine.",
     overview: [
@@ -296,18 +250,6 @@ export const campsEn: Camp[] = [
       "Day 5: Zhongfang No. 1 Middle School performance and celebratory debrief.",
     ],
     productions: ["Say It Out Loud (《爱要大声说出口》)", "Delayed Repair (《延迟修复》)"],
-    productionsDetailed: [
-      {
-        title: "Say It Out Loud (《爱要大声说出口》)",
-        premise: "Someone meets a person they once loved on a train",
-        body: "A silent young man misses love through timidity; a awkward father wraps clumsy care in hurtful words. Improvised fragments became a train full of regret and reconciliation. The rainy teahouse premiere was calm and steady; facing high school students' laughter and empathy, we understood again that Theatre Seed has never been about perfect performance—it is about every expression being seen.",
-      },
-      {
-        title: "Delayed Repair (《延迟修复》)",
-        premise: "Someone meets their deceased mother in a hospital",
-        body: "A busy adult, after their mother's death, looks through photos from her life and sees the person beyond the role of \"mother.\" Three acts span youth to old age: the dreamer, the daughter no one believed in, the wife who endured, the strong older sister, the mother who didn't want to be a burden. What gets repaired late is our understanding of women's identities and the capture of family love—so love need not wait; it can be mended now.",
-      },
-    ],
     modules: [
       {
         title: "Co-writing the script",
@@ -393,40 +335,25 @@ export const campsEn: Camp[] = [
     participants: "Actor group · backstage group · mentor team",
     status: "completed",
     cover: "/images/camps/2026-summer/poster-oppression.jpg",
-    gallery: [],
+    gallery: [
+      "/images/camps/2026-summer/poster-oppression.jpg",
+      "/images/camps/2026-summer/poster-petit-prince.jpg",
+      "/images/camps/2026-summer/oppression-01.jpg",
+      "/images/camps/2026-summer/oppression-02.jpg",
+      "/images/camps/2026-summer/oppression-03.jpg",
+      "/images/camps/2026-summer/oppression-04.jpg",
+      "/images/camps/2026-summer/oppression-05.jpg",
+      "/images/camps/2026-summer/prince-01.jpg",
+      "/images/camps/2026-summer/prince-02.jpg",
+      "/images/camps/2026-summer/prince-03.jpg",
+      "/images/camps/2026-summer/prince-04.jpg",
+      "/images/camps/2026-summer/prince-05.jpg",
+      "/images/camps/2026-summer/prince-06.jpg",
+    ],
     summary:
       "From July 23 to August 2, 2026, Theatre Seed Summer Camp took place in Jiaxing, Zhejiang & Shanghai. The company staged Oppression and The Little Prince, closing with three performances on Jul 31, Aug 1, and Aug 2. A fuller recap and more field photos will follow.",
     overview: [],
     productions: ["Oppression", "The Little Prince"],
-    productionsDetailed: [
-      {
-        title: "Oppression",
-        director: "Ran & Guo",
-        body: "",
-        poster: "/images/camps/2026-summer/poster-oppression.jpg",
-        photos: [
-          "/images/camps/2026-summer/oppression-01.jpg",
-          "/images/camps/2026-summer/oppression-02.jpg",
-          "/images/camps/2026-summer/oppression-03.jpg",
-          "/images/camps/2026-summer/oppression-04.jpg",
-          "/images/camps/2026-summer/oppression-05.jpg",
-        ],
-      },
-      {
-        title: "The Little Prince",
-        director: "Wang Xijia",
-        body: "",
-        poster: "/images/camps/2026-summer/poster-petit-prince.jpg",
-        photos: [
-          "/images/camps/2026-summer/prince-01.jpg",
-          "/images/camps/2026-summer/prince-02.jpg",
-          "/images/camps/2026-summer/prince-03.jpg",
-          "/images/camps/2026-summer/prince-04.jpg",
-          "/images/camps/2026-summer/prince-05.jpg",
-          "/images/camps/2026-summer/prince-06.jpg",
-        ],
-      },
-    ],
     modules: [],
     quotes: [],
     schedule: [
